@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/notes" style="color: black;"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <div class="date-container">
+    <div class="date">
+      <span class="day-number">{{ currentDate | date: 'dd' }}</span>
+      <span class="month">{{ currentDate | date: 'MMMM' }}</span>
+    </div>
+    
+    <div class="date">
+      <div class="year">{{ currentDate | date: 'yyyy' }}</div>
+      <p>,</p>
+      <div class="day">{{ currentDate | date: 'EEEE' }}</div>
+    </div>
+   
+  </div>
+  <div class="bottom-border"></div>
+</ion-header>
+
+<ion-content class="note-content">
+  <ion-textarea placeholder="Write your note here..." auto-grow="true"></ion-textarea>
+</ion-content>

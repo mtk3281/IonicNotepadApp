@@ -1,0 +1,193 @@
+/* Import Proxima Nova font */
+@import url('https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@400;700&display=swap');
+
+/* Apply Proxima Nova font to the entire app */
+:root {
+  --font-family: 'Proxima Nova', sans-serif;
+}
+
+/* Apply font to entire app */
+body {
+  font-family: var(--font-family);
+}
+
+.toolbar-notes{
+    padding-top: 6px;
+    padding-bottom: 4px;
+    border-bottom: 2px  solid #e5f2ff;
+}
+
+// /* Remove line separator */
+ion-header,
+ion-content {
+  box-shadow: none;
+}
+
+
+/* Set the background color of the entire page */
+ion-content {
+  --background: #ffffff; /* White background */
+  padding: 16px;
+}
+
+/* Title styling */
+.app-title {
+  font-family: var(--font-family);
+  font-size: 24px;
+  font-weight: bold;
+  text-align: left;
+  color: #000000; /* Black color for the title */
+}
+/* Toolbar styling */
+ion-toolbar {
+  --background: #ffffff; /* White background */
+  --color: #000000; /* Black color for text */
+  padding: 8px 4px;
+  justify-content: space-between;
+  height: 64px; /* Set a consistent height */
+}
+
+
+/* FAB button styling */
+ion-fab-button {
+  --background: #000000; /* Black background */
+  --color: #ffffff; /* White icon color */
+}
+
+ion-fab {
+  bottom: 40px; /* Adjust this value to move the FAB up */
+  right: 20px;  /* Adjust this value to move the FAB to the left */
+}
+
+
+
+// /* Menu styling */
+// .custom-menu {
+//     --width: 75%;
+//   }
+
+// .menu-toolbar {
+//     --background: #ffffff;
+//     align-items: center; /* Ensure vertical alignment */
+//     padding: 16px;
+//     height: 70px; /* Set a consistent height */
+//     border: none; /* Ensure no border */
+//     box-shadow: none; /* Remove any box-shadow if present */
+// }
+
+// .menu-icon {
+//     margin-left: 8px; /* Space between icon and title */
+//     width: 32px; /* Adjust size as needed */
+//     height: 32px; /* Adjust size as needed */
+// }
+
+// .menu-title {
+//     font-family: var(--font-family);
+//     font-size: 22px;
+//     font-weight: bold;
+//     color: #000000; /* Black color for the title */
+//     margin: 0; /* Remove any default margin */
+// }
+  
+// /* Ensure no padding/margin issues with the image */
+// .menu-toolbar img {
+// margin: 0; /* Remove any extra margin */
+// }
+
+// /* Search bar styling */
+// .search-bar {
+//   --background: #F5F6F6; /* Light grey background */
+//   --placeholder-color: #000000; /* Black color for placeholder text */
+//   --color: #000000; /* Black color for text */
+//   --border-radius: 12px; /* Rounded corners */
+//   margin: 6px;
+//   padding-right: 18px; /* Add padding to the right */
+//   padding-top: 6px; /* Add padding to the top */
+//   --placeholder-font-style: normal; /* Remove italic from placeholder text */
+//   --box-shadow: none;
+// }
+
+// /* Menu header styling */
+// .menu-header {
+//   font-family: var(--font-family);
+//   font-size: 15px;
+//   font-weight: 540;
+//   color: #4d4d4d; /* Grey color */
+//   margin-top: 12px;
+//   padding-left: 16px;
+// }
+
+// /* Menu item styling */
+// .menu-item {
+//   --background: #ffffff; /* White background */
+//   --color: #000000; /* Black color for text */
+//   --border-radius: 12px; /* Rounded corners */
+//   padding-top: 2px;
+//   padding-left:  10px; /* Less padding between items */
+//   padding-right:  10px; /* Less padding between items */
+//   padding-bottom: 6px;
+//   font-weight: bold; /* Increase text weight */
+//  --border-color:transparent;
+// }
+
+// .menu-item:hover {
+//   --background: #F5F6F6; /* Light grey on hover */
+// }
+// .menu-item.active {
+//   --background: #F5F6F6; /* Light grey for active item */
+// }
+
+// .menu-item ion-icon {
+//   color: #000000; /* Black color for icons */
+// }
+// ion-list {
+//     --ion-item-background: #ffffff;
+//     --background: #ffffff;
+//     --ion-background-color: #fefefe;
+//     --box-shadow: none; /* Remove any shadow */
+//     --border-color: transparent; /* Remove any border */
+//     --border-bottom: 1px solid #ffffff; /* Remove black layer between items */
+// }
+
+// :host{
+//     --background:#ffffff;
+//     --display:flex;
+// }
+  
+// /* Container styling */
+// #container {
+//   text-align: left;
+//   position: absolute;
+//   left: 0;
+//   right: 0;
+//   top: 50%;
+//   transform: translateY(-50%);
+// }
+
+// #container strong {
+//   font-size: 20px;
+//   line-height: 24px;
+// }
+
+// #container p {
+//   font-size: 16px;
+//   line-height: 22px;
+//   color: #8c8c8c;
+//   margin: 0;
+// }
+
+// #container a {
+//   text-decoration: none;
+// }
+
+
+// .toolbar-header{
+//   background-color: #ffffff;
+//   display: flex;
+//   --background: #ffffff;
+//   align-items: center; /* Ensure vertical alignment */
+//   padding: 14px;
+//   height: 70px; /* Set a consistent height */
+//   border: none; /* Ensure no border */
+//   box-shadow: none; /* Remove any box-shadow if present */
+// }

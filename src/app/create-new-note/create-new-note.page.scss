@@ -1,0 +1,90 @@
+ion-header {
+  background-color: white;
+  --background:white;
+  text-align: left;
+}
+
+ion-button{
+  color:black;
+}
+
+ion-content{
+  --background:white;
+}
+
+ion-toolbar{
+  --background:rgb(255, 255, 255);
+}
+
+/* Remove line separator */
+ion-header,
+ion-content {
+  box-shadow: none;
+}
+
+
+.date-container {
+  text-align: left;
+  margin-top: 10px;
+  padding-left:10px;
+}
+
+.date {
+  padding-left:14px;
+  display: flex;
+  justify-content: left;
+  // align-items: baseline;
+}
+
+.day-number {
+  color:rgb(58, 107, 255);
+  font-weight: 520;
+  font-size: 2.1em;
+  margin-right: 5px;
+}
+
+.month {
+  color: black;
+  font-size: 2.1em;
+  font-weight: 540;
+  margin-left: 6px;
+}
+
+.year {
+  margin-top:5px;
+  color: rgb(101, 101, 101);
+  font-size: 1em;
+  // margin-left: 4px;
+}
+
+p{
+  margin-top:5px;
+  color:rgb(101, 101, 101);
+}
+
+.day {
+  margin-top:5px;
+  padding-left: 4px;
+  color: rgb(101, 101, 101);
+  font-size: 1em;
+  font-weight: bold;
+}
+
+
+.bottom-border {
+  border-bottom: 1px solid rgb(225, 222, 222);
+  // box-shadow: None;
+}
+
+ion-content.note-content {
+  background-color: rgb(4, 4, 4);
+  padding: 15px;
+}
+
+ion-textarea {
+  margin-left: 15px;
+  width: 85%;
+  color:black;
+  height: calc(100vh - 120px); /* Adjusting height to leave space for the header */
+  font-size: 1.2em;
+}
