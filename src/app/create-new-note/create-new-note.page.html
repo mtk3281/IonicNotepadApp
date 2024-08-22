@@ -4,7 +4,7 @@
     <ion-back-button defaultHref="/notes" style="color: black;"></ion-back-button>
   </ion-buttons>
 
-  <ion-buttons slot="end">
+  <ion-buttons slot="end" *ngIf="noteTitle || noteContent">
     <ion-button (click)="saveNote()" style="color: black;">
       <ion-icon slot="icon-only" name="save"></ion-icon>
     </ion-button>
@@ -33,6 +33,6 @@
 </ion-header>
 
 <ion-content class="note-content">
-  <ion-textarea placeholder="Title" auto-grow="true" cols="1" rows="1" class="title-text"></ion-textarea>
-  <ion-textarea placeholder="Note here" auto-grow="true" class="note-text" cols="1" rows="1"></ion-textarea>
+  <ion-textarea [(ngModel)]="noteTitle" placeholder="Title" auto-grow="true" cols="1" rows="1" class="title-text"></ion-textarea>
+  <ion-textarea [(ngModel)]="noteContent" placeholder="Note here" auto-grow="true" class="note-text" cols="1" rows="1"></ion-textarea>
 </ion-content>

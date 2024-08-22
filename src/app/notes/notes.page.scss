@@ -21,13 +21,14 @@ body {
 ion-header,
 ion-content {
   box-shadow: none;
+  --box-shadow:none;
 }
 
 
 /* Set the background color of the entire page */
 ion-content {
   --background: #ffffff; /* White background */
-  padding: 16px;
+  padding: 1px;
 }
 
 /* Title styling */
@@ -52,142 +53,50 @@ ion-toolbar {
 ion-fab-button {
   --background: #2b75ff; /* Black background */
   --color: #ffffff; /* White icon color */
+  // --color: #fef1de;
 }
 
 ion-fab {
-  bottom: 40px; /* Adjust this value to move the FAB up */
-  right: 20px;  /* Adjust this value to move the FAB to the left */
+  position: fixed;
+  bottom: 40px; /* Adjust as needed */
+  right: 20px;  /* Adjust as needed */
+  z-index: 10; /* Make sure it stays above other elements */
 }
 
+/* Container for the cards */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
 
+/* Styling for individual cards */
+.note-card {
+  margin-top: 6px;
+  margin-left: 6px;
+  margin-right: 6px;
+  margin-bottom: 6px;
 
-// /* Menu styling */
-// .custom-menu {
-//     --width: 75%;
-//   }
+  flex: 1 1 auto; 
+  --background: #ededed; /* Card background color */
+  box-shadow: none; /* Remove shadow */
+  padding: 0px; /* Add padding inside the card */
+  text-align: left; /* Align text to the left */
+}
 
-// .menu-toolbar {
-//     --background: #ffffff;
-//     align-items: center; /* Ensure vertical alignment */
-//     padding: 16px;
-//     height: 70px; /* Set a consistent height */
-//     border: none; /* Ensure no border */
-//     box-shadow: none; /* Remove any box-shadow if present */
-// }
+/* Title styling */
+.note-card ion-card-title {
+  font-family: 'Roboto', sans-serif; /* Roboto for title */
+  font-weight: bold; /* Bold title */
+  font-size: 16px; /* Larger title font size */
+  color: #000000; /* Black color for title */
+  margin-bottom: 0px; /* Space below title */
+}
 
-// .menu-icon {
-//     margin-left: 8px; /* Space between icon and title */
-//     width: 32px; /* Adjust size as needed */
-//     height: 32px; /* Adjust size as needed */
-// }
-
-// .menu-title {
-//     font-family: var(--font-family);
-//     font-size: 22px;
-//     font-weight: bold;
-//     color: #000000; /* Black color for the title */
-//     margin: 0; /* Remove any default margin */
-// }
-  
-// /* Ensure no padding/margin issues with the image */
-// .menu-toolbar img {
-// margin: 0; /* Remove any extra margin */
-// }
-
-// /* Search bar styling */
-// .search-bar {
-//   --background: #F5F6F6; /* Light grey background */
-//   --placeholder-color: #000000; /* Black color for placeholder text */
-//   --color: #000000; /* Black color for text */
-//   --border-radius: 12px; /* Rounded corners */
-//   margin: 6px;
-//   padding-right: 18px; /* Add padding to the right */
-//   padding-top: 6px; /* Add padding to the top */
-//   --placeholder-font-style: normal; /* Remove italic from placeholder text */
-//   --box-shadow: none;
-// }
-
-// /* Menu header styling */
-// .menu-header {
-//   font-family: var(--font-family);
-//   font-size: 15px;
-//   font-weight: 540;
-//   color: #4d4d4d; /* Grey color */
-//   margin-top: 12px;
-//   padding-left: 16px;
-// }
-
-// /* Menu item styling */
-// .menu-item {
-//   --background: #ffffff; /* White background */
-//   --color: #000000; /* Black color for text */
-//   --border-radius: 12px; /* Rounded corners */
-//   padding-top: 2px;
-//   padding-left:  10px; /* Less padding between items */
-//   padding-right:  10px; /* Less padding between items */
-//   padding-bottom: 6px;
-//   font-weight: bold; /* Increase text weight */
-//  --border-color:transparent;
-// }
-
-// .menu-item:hover {
-//   --background: #F5F6F6; /* Light grey on hover */
-// }
-// .menu-item.active {
-//   --background: #F5F6F6; /* Light grey for active item */
-// }
-
-// .menu-item ion-icon {
-//   color: #000000; /* Black color for icons */
-// }
-// ion-list {
-//     --ion-item-background: #ffffff;
-//     --background: #ffffff;
-//     --ion-background-color: #fefefe;
-//     --box-shadow: none; /* Remove any shadow */
-//     --border-color: transparent; /* Remove any border */
-//     --border-bottom: 1px solid #ffffff; /* Remove black layer between items */
-// }
-
-// :host{
-//     --background:#ffffff;
-//     --display:flex;
-// }
-  
-// /* Container styling */
-// #container {
-//   text-align: left;
-//   position: absolute;
-//   left: 0;
-//   right: 0;
-//   top: 50%;
-//   transform: translateY(-50%);
-// }
-
-// #container strong {
-//   font-size: 20px;
-//   line-height: 24px;
-// }
-
-// #container p {
-//   font-size: 16px;
-//   line-height: 22px;
-//   color: #8c8c8c;
-//   margin: 0;
-// }
-
-// #container a {
-//   text-decoration: none;
-// }
-
-
-// .toolbar-header{
-//   background-color: #ffffff;
-//   display: flex;
-//   --background: #ffffff;
-//   align-items: center; /* Ensure vertical alignment */
-//   padding: 14px;
-//   height: 70px; /* Set a consistent height */
-//   border: none; /* Ensure no border */
-//   box-shadow: none; /* Remove any box-shadow if present */
-// }
+/* Content styling */
+.note-card ion-card-content {
+  font-family: 'sans-serif'; /* Sans-serif for content */
+  font-weight: normal; /* Regular content */
+  font-size: 12px; /* Smaller than title */
+  color: #333; /* Dark grey color for text */
+}

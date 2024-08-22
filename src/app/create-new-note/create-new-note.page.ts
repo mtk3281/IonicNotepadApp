@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { PopoverComponent } from '../popover/popover.component';
 import { PopoverController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
+import { Router } from '@angular/router';
+import { NotesService } from '../notes.service';
 
 @Component({
   selector: 'app-create-new-note',
@@ -10,14 +13,22 @@ import { PopoverController } from '@ionic/angular';
 export class CreateNewNotePage {
   currentDate: Date;
 
-  constructor(private popoverController: PopoverController) {
+  noteTitle: string = '';
+  noteContent: string = '';
+  
+  constructor(private popoverController: PopoverController, private storage: Storage, private router: Router, private notesService: NotesService) {
+    this.storage.create(); 
     this.currentDate = new Date();
   }
 
-  // Method to save the note
-  saveNote() {
-    console.log('Note saved!');
-    // Add your save note logic here
+  async saveNote() {
+    const note = {
+      title: this.noteTitle,
+      content: this.noteContent,
+      date: new Date()
+    };
+    await this.notesService.saveNote(note);
+    this.router.navigate(['/notes']);
   }
 
   // Method to present the popover
@@ -29,5 +40,6 @@ export class CreateNewNotePage {
     });
     return await popover.present();
   }
+  
 }
 
