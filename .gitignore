@@ -80,3 +80,5 @@ android/
 ios/
 platforms/
 .angular/
+
+.env
