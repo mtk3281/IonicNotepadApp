@@ -76,15 +76,40 @@ p{
   // box-shadow: None;
 }
 
-ion-content.note-content {
-  background-color: rgb(4, 4, 4);
-  padding: 15px;
+.sc-ion-textarea-md-h {
+  --padding-top: 16px;
 }
 
-ion-textarea {
+.title-text,.note-text {
+  --placeholder-color: rgb(21, 21, 21);
+  padding-left: 10px;
   margin-left: 15px;
+  padding-top: 0px;
   width: 85%;
-  color:black;
-  height: calc(100vh - 120px); /* Adjusting height to leave space for the header */
-  font-size: 1.2em;
+  color: black;
+  height: auto; /* Let the height be controlled by content */
+  overflow-y: hidden; /* Hide scrollbars */
+  resize: none; /* Prevent manual resizing */
+}
+
+.title-text{
+  font-size: 1.45em;
+  font-weight: 548;
+  line-height: 1.45em; /* Ensure the line height matches the font size */
+
+}
+.note-text {
+  // margin-top: 6px;
+  font-size: 1.1em;
+  color: rgb(13, 13, 13);
+  height: auto; /* Let the height be controlled by content */
+  overflow-y: hidden; /* Hide scrollbars */
+  line-height: 1.1em; /* Ensure the line height matches the font size */
+  resize: none; /* Prevent manual resizing */
+}
+
+.title-text,.note-text{
+--highlight-color:disabled;
+caret-color:rgb(58, 107, 255);
+--highlight-color-focused:disabled;
 }
