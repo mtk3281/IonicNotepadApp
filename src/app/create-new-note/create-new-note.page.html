@@ -4,7 +4,15 @@
     <ion-back-button defaultHref="/notes" style="color: black;"></ion-back-button>
   </ion-buttons>
 
-  
+  <ion-buttons slot="end">
+    <ion-button (click)="saveNote()" style="color: black;">
+      <ion-icon slot="icon-only" name="save"></ion-icon>
+    </ion-button>
+    
+    <ion-button (click)="presentPopover($event)">
+      <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+    </ion-button>
+  </ion-buttons>
 </ion-toolbar>
 
 
