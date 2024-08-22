@@ -1,0 +1,82 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# compiled output
+www/
+build/
+dist/
+
+# dependencies
+node_modules/
+platforms/
+plugins/
+
+# Android
+.gradle/
+local.properties
+**/android/**/build/
+
+# iOS
+**/ios/**/build/
+**/ios/**/Pods/
+**/ios/**/xcuserdata/
+**/ios/**/DerivedData/
+**/ios/**/node_modules/
+**/ios/**/xcuserdata/
+**/ios/**/xcuserdata/
+
+# MAC OSX files
+.DS_Store
+*.DS_Store
+
+# IDEs and editors
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ionic Capacitor
+ios/App/App.xcodeproj/project.xcworkspace/xcuserdata/
+android/.gradle/
+android/app/build/
+android/capacitor.build.gradle
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Environment variables file
+.env
+
+# Compiled code
+*.out
+*.o
+*.pyc
+
+# Output of 'npm pack'
+*.tgz
+
+# Optional OS cache directory
+.cache
+
+# dotenv environment variables file
+.env.*
+
+# Capacitor config file
+capacitor.config.json
+capacitor.config.ts
+
+node_modules/
+android/
+ios/
+platforms/
+.angular/
