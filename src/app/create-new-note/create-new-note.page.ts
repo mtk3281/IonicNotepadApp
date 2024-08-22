@@ -11,4 +11,6 @@ export class CreateNewNotePage {
   constructor() {
     this.currentDate = new Date();
   }
+
 }
+
