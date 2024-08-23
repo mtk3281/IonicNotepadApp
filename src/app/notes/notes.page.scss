@@ -12,18 +12,27 @@ body {
 }
 
 .toolbar-notes{
-    padding-top: 6px;
-    padding-bottom: 4px;
-    border-bottom: 2px  solid #e2e2e2;
+  padding-top: 6px;
+  padding-bottom: 4px;
+  border-bottom: 2px  solid #e2e2e2;
 }
 
-// /* Remove line separator */
-ion-header,
-ion-content {
-  box-shadow: none;
-  --box-shadow:none;
+
+.toolbar-notes[_ngcontent-ng-c4147089924] {
+  --background: #000000;
 }
 
+// // /* Remove line separator */
+// ion-header,
+// ion-content {
+//   box-shadow: none;
+//   --box-shadow:none;
+// }
+
+ion-menu-button{
+  --color:white !important;
+   color:white !important;
+}
 
 /* Set the background color of the entire page */
 ion-content {
@@ -34,15 +43,15 @@ ion-content {
 /* Title styling */
 .app-title {
   font-family: var(--font-family);
-  font-size: 24px;
+  font-size: 25px;
   font-weight: bold;
   text-align: left;
-  color: #000000; /* Black color for the title */
+  color: #ffffff; /* Black color for the title */
 }
 /* Toolbar styling */
 ion-toolbar {
-  --background: #ffffff; /* White background */
-  --color: #000000; /* Black color for text */
+  // --background: #ffffff; /* White background */
+  --color: #ffffff; /* Black color for text */
   padding: 8px 4px;
   justify-content: space-between;
   height: 64px; /* Set a consistent height */
@@ -88,7 +97,7 @@ ion-fab {
 .note-card ion-card-title {
   font-family: 'Roboto', sans-serif; /* Roboto for title */
   font-weight: bold; /* Bold title */
-  font-size: 16px; /* Larger title font size */
+  font-size: 18px; /* Larger title font size */
   color: #000000; /* Black color for title */
   margin-bottom: 0px; /* Space below title */
 }
@@ -97,7 +106,7 @@ ion-fab {
 .note-card ion-card-content {
   font-family: 'sans-serif'; /* Sans-serif for content */
   font-weight: normal; /* Regular content */
-  font-size: 12px; /* Smaller than title */
+  font-size: 14px; /* Smaller than title */
   color: #333; /* Dark grey color for text */
 }
 
@@ -125,14 +134,27 @@ ion-fab {
 
 .selection-toolbar ion-button {
   --padding-start: 0; /* Adjust padding as needed */
-  --padding-end: 0; /* Adjust padding as needed */
-  margin: 0 9px; /* Add horizontal margin between buttons */
+  --padding-end: 0px; /* Adjust padding as needed */
+  margin: 0 10px; /* Add horizontal margin between buttons */
   height: 100%; /* Ensure button height matches toolbar height */
   display: flex;
   align-items: center; /* Center icons vertically */
 }
 
+.toolbar-notes ion-button {
+  --padding-start: 0; /* Adjust padding as needed */
+  --padding-end: 5px; /* Adjust padding as needed */
+  margin: 0 12px; /* Add horizontal margin between buttons */
+  height: 100%; /* Ensure button height matches toolbar height */
+  display: flex;
+  align-items: center; /* Center icons vertically */
+}
+
+
 .selection-toolbar mat-icon {
+  font-size: 26px; /* Adjust icon size as needed */
+}
+.toolbar-notes mat-icon {
   font-size: 26px; /* Adjust icon size as needed */
 }
 
@@ -148,8 +170,7 @@ ion-fab {
 }
 
 .note-card.selected {
-  border: 2px solid rgb(99, 99, 99); /* Set the border color */
-  box-shadow: 0 0 5px rgba(134, 134, 134, 0.5); /* Optional: add a shadow effect */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Optional: add a shadow effect */
 }
 
 

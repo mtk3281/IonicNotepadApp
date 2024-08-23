@@ -37,7 +37,7 @@ export class NotesPage implements OnInit {
         }
       }
     });
-    await StatusBar.setBackgroundColor({ color: '#FFFFFF' });
+    await StatusBar.setBackgroundColor({ color: '#000000' });
   }
 
   async loadNotes() {
@@ -105,4 +105,5 @@ export class NotesPage implements OnInit {
       this.openNote(note);
     }
   }
+  
 }

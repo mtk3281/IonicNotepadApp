@@ -10,6 +10,7 @@
       </ion-button>
       <ion-button (click)="onSearchClick()">
         <mat-icon> search</mat-icon>
+
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -47,7 +48,12 @@
   <div class="cards-container">
     <ion-card *ngFor="let note of notes"
       class="note-card"
-      [ngStyle]="{'--background': note.color}"
+      [ngStyle]="{
+        '--background': note.color,
+        'border-color': selectedNotes.includes(note) ? '#404040' : note.bcolor,
+        'border-width': '2px',
+        'border-style': 'solid',
+      }"
       [class.selected]="selectedNotes.includes(note)"
       (click)="onCardClick(note)">
       <ion-card-header>
@@ -58,4 +64,5 @@
       </ion-card-content>
     </ion-card>
   </div>
+  
 </ion-content>

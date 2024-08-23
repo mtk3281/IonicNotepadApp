@@ -6,6 +6,11 @@
   --font-family: 'Proxima Nova', sans-serif;
 }
 
+ion-menu-button{
+  --color:white !important;
+   color:white !important;
+}
+
 /* Apply font to entire app */
 body {
   font-family: var(--font-family);

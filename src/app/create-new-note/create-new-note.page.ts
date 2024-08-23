@@ -17,10 +17,12 @@ export class CreateNewNotePage {
   noteTitle: string = '';
   noteContent: string = '';
   noteColor: string = '';
+  bColor: string = '';
 
   private colors = [
     '#f1fff2', '#fedef3', '#fef1de', '#e3f2fd', '#fff9c4', '#f8bbd0', '#d1c4e9'
   ];
+  
 
   constructor(
     private popoverController: PopoverController, 
@@ -45,13 +47,21 @@ export class CreateNewNotePage {
   }
 
   ngOnInit() {
-    this.assignColor();
+    if (!this.noteId) {
+      this.assignColor();
+    } else {
+      // If editing an existing note, ensure bcolor is set based on the noteColor
+      this.bColor = this.darkenColor(this.noteColor, 0.2);
+    }
   }
+  
 
   assignColor() {
     // Randomly assign a color from the predefined set
     this.noteColor = this.colors[Math.floor(Math.random() * this.colors.length)];
+    this.bColor = this.darkenColor(this.noteColor, 0.2); // Darken by 20%
   }
+
 
   async saveNote() {
     const note = {
@@ -59,14 +69,68 @@ export class CreateNewNotePage {
       title: this.noteTitle,
       content: this.noteContent,
       date: new Date(),
-      color: this.noteColor
+      color: this.noteColor,
+      bcolor: this.bColor,  // Include the border color
     };
     await this.notesService.saveNote(note);
     this.router.navigate(['/notes']);
   }
-
   
 
+
+  darkenColor(color: string, percent: number): string {
+    // Convert HEX to RGB
+    let r = parseInt(color.slice(1, 3), 16);
+    let g = parseInt(color.slice(3, 5), 16);
+    let b = parseInt(color.slice(5, 7), 16);
+  
+    // Convert RGB to HSL
+    r /= 255;
+    g /= 255;
+    b /= 255;
+  
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h = 0;  // Initialize h to 0 to avoid undefined issues
+    let s, l = (max + min) / 2;
+  
+    if (max === min) {
+      s = 0; // achromatic
+    } else {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
+      }
+      h /= 6;
+    }
+  
+    // Darken the lightness by the specified percentage
+    l = l * (1 - percent);
+  
+    // Convert HSL back to RGB
+    let q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    let p = 2 * l - q;
+    r = Math.round(this.hueToRgb(p, q, h + 1/3) * 255);
+    g = Math.round(this.hueToRgb(p, q, h) * 255);
+    b = Math.round(this.hueToRgb(p, q, h - 1/3) * 255);
+  
+    // Convert RGB back to HEX
+    return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()}`;
+  }
+  
+  hueToRgb(p: number, q: number, t: number): number {
+    if (t < 0) t += 1;
+    if (t > 1) t -= 1;
+    if (t < 1/6) return p + (q - p) * 6 * t;
+    if (t < 1/2) return q;
+    if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+    return p;
+  }
+
+  
   // Method to present the popover
   async presentPopover(ev: any) {
     const popover = await this.popoverController.create({
@@ -106,5 +170,4 @@ export class CreateNewNotePage {
       console.error('Error sharing note:', error);
     }
   }
-
 }
