@@ -21,7 +21,10 @@
   
 
   <div class="cards-container">
-    <ion-card *ngFor="let note of notes" class="note-card" [ngStyle]="{'--background': getRandomColor()}">
+    <ion-card *ngFor="let note of notes" 
+    class="note-card" 
+    [ngStyle]="{'--background': getRandomColor()}"
+    (click)="openNote(note)">
       <ion-card-header>
         <ion-card-title>{{ note.title }}</ion-card-title>
       </ion-card-header>

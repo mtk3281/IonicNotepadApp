@@ -44,11 +44,16 @@ export class NotesPage implements OnInit {
 
   }
 
-
-  
   async loadNotes() {
     this.notes = await this.notesService.getNotes();
   }
+
+  openNote(note: any) {
+    this.router.navigate(['/create-new-note'], {
+      state: { note: { id: note.id, title: note.title, content: note.content } }
+    });
+  }
+
 
   getRandomColor(): string {
     if (this.usedColors.length === this.colors.length) {

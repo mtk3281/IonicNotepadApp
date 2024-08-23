@@ -18,7 +18,9 @@ export class NotesService {
 
   async saveNote(note: any) {
     if (this.localStorage) {
-      await this.localStorage.set('note_' + Date.now(), note);
+      // await this.localStorage.set('note_' + Date.now(), note);
+        await this.localStorage.set(note.id, note); // Use the note's id as the key
+    
     } else {
       console.error('Storage is not initialized');
     }
