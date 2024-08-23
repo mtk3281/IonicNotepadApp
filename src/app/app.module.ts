@@ -7,10 +7,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { PopoverComponent } from './popover/popover.component';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { NotesPage } from './notes/notes.page';
+import { MatIconModule } from '@angular/material/icon'; 
+
 
 @NgModule({
   declarations: [AppComponent,PopoverComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,IonicStorageModule.forRoot()],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,IonicStorageModule.forRoot(),MatIconModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent], 
 })

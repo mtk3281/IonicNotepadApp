@@ -11,22 +11,19 @@ import { NotesService } from '../notes.service';
   styleUrls: ['./notes.page.scss'],
 })
 export class NotesPage implements OnInit {
-  private colors = [
-    '#f1fff2','#fedef3','#fef1de', '#e3f2fd','#fff9c4','#f8bbd0','#d1c4e9'];
-  
-  private usedColors: string[] = [];
+
 
   notes: any[] = [];
+  selectedNotes: any[] = [];
+  inSelectionMode = false;
 
   @ViewChild('mainMenu', { static: true }) mainMenu!: IonMenu;
   currentPage: string = '';
-  
-  constructor(private router: Router, private storage: Storage,private notesService: NotesService,) {
 
+  constructor(private router: Router, private storage: Storage, private notesService: NotesService) {
     this.router.events.subscribe(() => {
       this.currentPage = this.router.url.split('/').pop() as string;
     });
-  
   }
 
   async ngOnInit() {
@@ -41,7 +38,6 @@ export class NotesPage implements OnInit {
       }
     });
     await StatusBar.setBackgroundColor({ color: '#FFFFFF' });
-
   }
 
   async loadNotes() {
@@ -49,27 +45,16 @@ export class NotesPage implements OnInit {
   }
 
   openNote(note: any) {
-    this.router.navigate(['/create-new-note'], {
-      state: { note: { id: note.id, title: note.title, content: note.content } }
-    });
-  }
-
-
-  getRandomColor(): string {
-    if (this.usedColors.length === this.colors.length) {
-      this.usedColors = [];
+    if (this.inSelectionMode) {
+      this.toggleNoteSelection(note);
+    } else {
+      this.router.navigate(['/create-new-note'], {
+        state: { note: { id: note.id, title: note.title, content: note.content } }
+      });
     }
-    const remainingColors = this.colors.filter(color => !this.usedColors.includes(color));
-
-    const randomIndex = Math.floor(Math.random() * remainingColors.length);
-    const color = remainingColors[randomIndex];
-
-    this.usedColors.push(color);
-
-    return color;
   }
-  
-  onSearchClick(){
+
+  onSearchClick() {
     console.log('onSearchClick');
   }
 
@@ -77,4 +62,47 @@ export class NotesPage implements OnInit {
     this.router.navigate([page]);
   }
 
+  enterSelectionMode() {
+    this.inSelectionMode = true;
+  }
+
+  exitSelectionMode() {
+    this.inSelectionMode = false;
+    this.selectedNotes = [];
+  }
+
+  toggleNoteSelection(note: any) {
+    const index = this.selectedNotes.indexOf(note);
+    if (index > -1) {
+      this.selectedNotes.splice(index, 1);
+    } else {
+      this.selectedNotes.push(note);
+    }
+  }
+
+  deleteSelectedNotes() {
+    // Implement deletion logic here
+    console.log('Delete selected notes:', this.selectedNotes);
+    this.exitSelectionMode();
+  }
+
+  archiveSelectedNotes() {
+    // Implement archiving logic here
+    console.log('Archive selected notes:', this.selectedNotes);
+    this.exitSelectionMode();
+  }
+
+  shareSelectedNotes() {
+    // Implement sharing logic here
+    console.log('Share selected notes:', this.selectedNotes);
+    this.exitSelectionMode();
+  }
+
+  onCardClick(note: any) {
+    if (this.inSelectionMode) {
+      this.toggleNoteSelection(note);
+    } else {
+      this.openNote(note);
+    }
+  }
 }

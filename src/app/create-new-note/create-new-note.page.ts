@@ -16,13 +16,19 @@ export class CreateNewNotePage {
   noteId: string | undefined;
   noteTitle: string = '';
   noteContent: string = '';
-  
+  noteColor: string = '';
+
+  private colors = [
+    '#f1fff2', '#fedef3', '#fef1de', '#e3f2fd', '#fff9c4', '#f8bbd0', '#d1c4e9'
+  ];
+
   constructor(
     private popoverController: PopoverController, 
     private storage: Storage, 
     private router: Router, 
     private notesService: NotesService
   ) {
+
     this.storage.create(); 
     this.currentDate = new Date();
 
@@ -38,12 +44,22 @@ export class CreateNewNotePage {
     }
   }
 
+  ngOnInit() {
+    this.assignColor();
+  }
+
+  assignColor() {
+    // Randomly assign a color from the predefined set
+    this.noteColor = this.colors[Math.floor(Math.random() * this.colors.length)];
+  }
+
   async saveNote() {
     const note = {
       id: this.noteId || 'note_' + Date.now(),
       title: this.noteTitle,
       content: this.noteContent,
-      date: new Date()
+      date: new Date(),
+      color: this.noteColor
     };
     await this.notesService.saveNote(note);
     this.router.navigate(['/notes']);

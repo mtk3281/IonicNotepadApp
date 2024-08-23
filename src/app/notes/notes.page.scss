@@ -14,7 +14,7 @@ body {
 .toolbar-notes{
     padding-top: 6px;
     padding-bottom: 4px;
-    border-bottom: 2px  solid #e5f2ff;
+    border-bottom: 2px  solid #e2e2e2;
 }
 
 // /* Remove line separator */
@@ -100,3 +100,56 @@ ion-fab {
   font-size: 12px; /* Smaller than title */
   color: #333; /* Dark grey color for text */
 }
+
+.toolbar-notes {
+  --background: #fff;
+}
+
+.selection-toolbar {
+  border-bottom: 2px solid #323232;
+  --background: #000000; /* Light blue color */
+  padding: 0; /* Remove default padding */
+}
+
+.selection-toolbar ion-title {
+  font-weight: bold;
+  font-size: 1.1em; /* Adjust size as needed */
+}
+
+.selection-toolbar ion-buttons {
+  height: 100%; /* Ensure buttons take full height of the toolbar */
+  display: flex;
+  align-items: center; /* Center items vertically */
+  color: #ffffff;
+}
+
+.selection-toolbar ion-button {
+  --padding-start: 0; /* Adjust padding as needed */
+  --padding-end: 0; /* Adjust padding as needed */
+  margin: 0 9px; /* Add horizontal margin between buttons */
+  height: 100%; /* Ensure button height matches toolbar height */
+  display: flex;
+  align-items: center; /* Center icons vertically */
+}
+
+.selection-toolbar mat-icon {
+  font-size: 26px; /* Adjust icon size as needed */
+}
+
+.selected-count {
+  padding-top: 10px;
+  padding-left:35px;
+  font-weight: bold;
+  // font-size: 0.9em; /* Adjust size as needed */
+}
+
+.note-card {
+  transition: border 0.25s ease, box-shadow 0.25s ease;
+}
+
+.note-card.selected {
+  border: 2px solid rgb(99, 99, 99); /* Set the border color */
+  box-shadow: 0 0 5px rgba(134, 134, 134, 0.5); /* Optional: add a shadow effect */
+}
+
+

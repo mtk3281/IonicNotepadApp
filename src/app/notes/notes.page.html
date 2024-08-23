@@ -1,12 +1,37 @@
-<ion-header >
-  <ion-toolbar class="toolbar-notes">
+<ion-header>
+  <ion-toolbar *ngIf="!inSelectionMode" class="toolbar-notes">
     <ion-buttons slot="start">
       <ion-menu-button style="font-weight: bold; color: rgb(0, 0, 0);"></ion-menu-button>
     </ion-buttons>
     <ion-title class="app-title">Notepad</ion-title>
     <ion-buttons slot="end">
+      <ion-button (click)="enterSelectionMode()">
+        <mat-icon> check_box_outline_blank</mat-icon>
+      </ion-button>
       <ion-button (click)="onSearchClick()">
-        <ion-icon slot="icon-only" name="search-sharp"></ion-icon>
+        <mat-icon> search</mat-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  
+  <ion-toolbar *ngIf="inSelectionMode" class="selection-toolbar">
+    <ion-buttons slot="start">
+      <ion-title class="selected-count">{{ selectedNotes.length }} Selected</ion-title>
+    </ion-buttons>
+    <ion-buttons slot="end">
+
+      <ion-button (click)="deleteSelectedNotes()">
+        <mat-icon>delete_outline</mat-icon>
+      </ion-button>
+      <ion-button (click)="archiveSelectedNotes()">
+        <mat-icon>bookmark_outline</mat-icon>
+      </ion-button>
+      <ion-button (click)="shareSelectedNotes()">        
+       <mat-icon>share_social</mat-icon>
+      </ion-button>
+      <ion-button (click)="exitSelectionMode()">
+        <mat-icon>close</mat-icon>
+
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -18,13 +43,13 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  
 
   <div class="cards-container">
-    <ion-card *ngFor="let note of notes" 
-    class="note-card" 
-    [ngStyle]="{'--background': getRandomColor()}"
-    (click)="openNote(note)">
+    <ion-card *ngFor="let note of notes"
+      class="note-card"
+      [ngStyle]="{'--background': note.color}"
+      [class.selected]="selectedNotes.includes(note)"
+      (click)="onCardClick(note)">
       <ion-card-header>
         <ion-card-title>{{ note.title }}</ion-card-title>
       </ion-card-header>
@@ -33,5 +58,4 @@
       </ion-card-content>
     </ion-card>
   </div>
-
 </ion-content>

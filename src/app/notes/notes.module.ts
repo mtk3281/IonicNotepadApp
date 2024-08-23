@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { NotesPageRoutingModule } from './notes-routing.module';
-
+import { MatIconModule } from '@angular/material/icon';
 import { NotesPage } from './notes.page';
 
 @NgModule({
@@ -13,7 +13,8 @@ import { NotesPage } from './notes.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    NotesPageRoutingModule
+    NotesPageRoutingModule,
+    MatIconModule,
   ],
   declarations: [NotesPage]
 })
