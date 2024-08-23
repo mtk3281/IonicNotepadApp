@@ -166,11 +166,9 @@ ion-fab {
 }
 
 .note-card {
-  transition: border 0.25s ease, box-shadow 0.25s ease;
+  transition: border 0.25s ease
 }
 
-.note-card.selected {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Optional: add a shadow effect */
-}
+
 
 

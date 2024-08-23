@@ -50,9 +50,10 @@
       class="note-card"
       [ngStyle]="{
         '--background': note.color,
-        'border-color': selectedNotes.includes(note) ? '#404040' : note.bcolor,
+        'border-color': selectedNotes.includes(note) ? 'black' : note.bcolor,
         'border-width': '2px',
         'border-style': 'solid',
+        'border-radius':'20px'
       }"
       [class.selected]="selectedNotes.includes(note)"
       (click)="onCardClick(note)">
