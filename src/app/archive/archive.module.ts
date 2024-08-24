@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { NotesPageRoutingModule } from './notes-routing.module';
+import { ArchivePageRoutingModule } from './archive-routing.module';
 import { MatIconModule } from '@angular/material/icon';
-import { NotesPage } from './notes.page';
+import { ArchivePage } from './archive.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NotesPageRoutingModule,
-    MatIconModule,
+    ArchivePageRoutingModule,
+    MatIconModule
   ],
-  declarations: [NotesPage]
+  declarations: [ArchivePage]
 })
-export class NotesPageModule {}
+export class ArchivePageModule {}

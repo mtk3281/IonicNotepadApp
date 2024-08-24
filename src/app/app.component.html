@@ -23,11 +23,11 @@
           <ion-label>Create New Note</ion-label>
         </ion-item>
         <ion-item 
-          (click)="navigateTo('bookmark'); closeMenu()" 
+          (click)="navigateTo('archive'); closeMenu()" 
           class="menu-item" 
-          [ngClass]="{'active': isActivePage('bookmark')}">
-          <ion-icon slot="start" name="bookmark-outline"></ion-icon>
-          <ion-label>Bookmark</ion-label>
+          [ngClass]="{'active': isActivePage('archive')}">
+          <ion-icon slot="start" name="archive-outline"></ion-icon>
+          <ion-label>archive</ion-label>
         </ion-item>
         <ion-item 
           (click)="navigateTo('calendar'); closeMenu()" 

@@ -28,8 +28,8 @@ const routes: Routes = [
     loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
   },
   {
-    path: 'bookmark',
-    loadChildren: () => import('./bookmark/bookmark.module').then( m => m.BookmarkPageModule)
+    path: 'archive',
+    loadChildren: () => import('./archive/archive.module').then( m => m.ArchivePageModule)
   }
 ];
 

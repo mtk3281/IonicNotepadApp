@@ -1,32 +1,26 @@
-import { Component, AfterViewInit, ViewChild, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { StatusBar } from '@capacitor/status-bar';
 import { IonMenu } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 import { NotesService } from '../notes.service';
 import { Share } from '@capacitor/share';
-import { AlertController } from '@ionic/angular';
-import { ToastController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import { SearchService } from '../search.service';
-import { IonSearchbar} from '@ionic/angular';
 
 @Component({
-  selector: 'app-notes',
-  templateUrl: './notes.page.html',
-  styleUrls: ['./notes.page.scss'],
+  selector: 'app-archive',
+  templateUrl: './archive.page.html',
+  styleUrls: ['./archive.page.scss'],
 })
-export class NotesPage implements OnInit, AfterViewInit{
-
+export class ArchivePage implements OnInit {
 
   notes: any[] = [];
   selectedNotes: any[] = [];
   filteredNotes: any[] = [];   // Notes that match the search query
   inSelectionMode = false;
-  inSearchMode = false;
-
-  @ViewChild('searchbar', { static: false, read: IonSearchbar }) searchbar!: IonSearchbar;
+ 
   @ViewChild('mainMenu', { static: true }) mainMenu!: IonMenu;
-
 
   currentPage: string = '';
 
@@ -42,15 +36,6 @@ export class NotesPage implements OnInit, AfterViewInit{
     this.router.events.subscribe(() => {
       this.currentPage = this.router.url.split('/').pop() as string;
     });
-
-    this.searchService.searchMode$.subscribe(mode => {
-      if (mode) {
-        this.activateSearchMode();
-      } else {
-        this.inSearchMode = false;
-      }
-    });
-    
   }
 
   async ngOnInit() {
@@ -59,18 +44,21 @@ export class NotesPage implements OnInit, AfterViewInit{
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        if (event.urlAfterRedirects === '/notes') {
+        if (event.urlAfterRedirects === '/archive') {  // Check for the correct route
           this.loadNotes();
         }
       }
     });
+
     await StatusBar.setBackgroundColor({ color: '#ffffff' });
-    
   }
-  
 
   async loadNotes() {
-    this.notes = await this.notesService.getNotes(false);
+    try {
+      this.notes = await this.notesService.getNotes(true); // Load archived notes
+    } catch (error) {
+      console.error('Error loading notes:', error);
+    }
   }
 
   openNote(note: any) {
@@ -93,46 +81,6 @@ export class NotesPage implements OnInit, AfterViewInit{
     });
     toast.present();
   }
-  
-  
-  ngAfterViewInit() {
-    // Trigger change detection to ensure view is fully initialized
-    this.cdr.detectChanges();
-    if (this.inSearchMode) {
-      // Use a timeout to ensure the searchbar is ready
-      setTimeout(() => {
-        console.log('Setting focus');
-        this.searchbar.setFocus();
-      }, 300);
-    }
-  }
-
-  activateSearchMode() {
-    this.inSearchMode = true;
-    // Ensure that the focus logic is applied
-    this.cdr.detectChanges();
-    setTimeout(() => {
-      console.log('Setting focus in activateSearchMode');
-      this.searchbar.setFocus();
-    }, 300);
-  }
-
-  deactivateSearchMode() {
-    this.inSearchMode = false;
-  }
-
-  onSearch(event: any) {
-    const query = event.detail.value.toLowerCase();
-    this.filteredNotes = query ? this.notes.filter(note => 
-      note.title.toLowerCase().includes(query) || 
-      note.content.toLowerCase().includes(query)
-    ) : [];
-  }
-
-  onClearSearch() {
-    this.filteredNotes = [];
-  }
-
 
   navigateTo(page: string) {
     this.router.navigate([page]);
@@ -156,7 +104,6 @@ export class NotesPage implements OnInit, AfterViewInit{
     }
   }
 
-
   async deleteSelectedNotes() {
     const alert = await this.alertController.create({
       header: 'Confirm Deletion',
@@ -169,12 +116,17 @@ export class NotesPage implements OnInit, AfterViewInit{
         {
           text: 'Delete',
           handler: async () => {
-            for (const note of this.selectedNotes) {
-              await this.notesService.deleteNoteById(note.id);
+            try {
+              for (const note of this.selectedNotes) {
+                await this.notesService.deleteNoteById(note.id);
+              }
+              await this.loadNotes(); // Reload notes after deletion
+              this.exitSelectionMode();
+              this.presentToast('Notes deleted successfully.');
+            } catch (error) {
+              console.error('Error deleting notes:', error);
+              this.presentToast('Error deleting notes.');
             }
-            await this.loadNotes(); // Reload notes after deletion
-            this.exitSelectionMode();
-            this.presentToast('deleted successfully.');  // Show toast message
           }
         }
       ]
@@ -183,16 +135,19 @@ export class NotesPage implements OnInit, AfterViewInit{
     await alert.present();
   }
   
-  
-
-  async archiveSelectedNotes() {
-    for (const note of this.selectedNotes) {
-      note.isArchived = true;
-      await this.notesService.updateNote(note); // Save the updated note with `isArchived` true
+  async unarchiveSelectedNotes() {
+    try {
+      for (const note of this.selectedNotes) {
+        note.isArchived = false;
+        await this.notesService.updateNote(note);
+      }
+      await this.loadNotes();
+      this.exitSelectionMode();
+      this.presentToast('notes unarchived');
+    } catch (error) {
+      console.error('Error unarchiving notes:', error);
+      this.presentToast('Error unarchiving notes.');
     }
-    await this.loadNotes(); // Reload to show only non-archived notes
-    this.exitSelectionMode();
-    this.presentToast('note archived');
   }
 
   async shareSelectedNotes() {
@@ -211,12 +166,10 @@ export class NotesPage implements OnInit, AfterViewInit{
   }
 
   onCardClick(note: any) {
-    this.inSearchMode=false;
     if (this.inSelectionMode) {
       this.toggleNoteSelection(note);
     } else {
       this.openNote(note);
     }
   }
-  
 }

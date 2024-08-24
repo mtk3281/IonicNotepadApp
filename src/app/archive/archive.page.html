@@ -1,31 +1,16 @@
 <ion-header>
-  <!-- Normal Toolbar -->
-  <ion-toolbar *ngIf="!inSelectionMode && !inSearchMode" class="toolbar-notes">
+  <ion-toolbar class="toolbar-notes">
     <ion-buttons slot="start">
       <ion-menu-button style="font-weight: bold; color: rgb(0, 0, 0);"></ion-menu-button>
     </ion-buttons>
-    <ion-title class="app-title">Notepad</ion-title>
+    <ion-title class="app-title">Archive</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="enterSelectionMode()">
         <mat-icon>check_box_outline_blank</mat-icon>
       </ion-button>
-      <ion-button (click)="activateSearchMode()">
-        <mat-icon>search</mat-icon>
-      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 
-  <!-- Search Toolbar -->
-  <ion-toolbar *ngIf="inSearchMode" class="toolbar-search">
-    <ion-buttons slot="start">
-      <ion-button (click)="deactivateSearchMode()">
-        <mat-icon>arrow_back</mat-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-searchbar class="mysearch-bar" #searchbar debounce="500" (ionInput)="onSearch($event)" (ionClear)="onClearSearch()"></ion-searchbar>
-  </ion-toolbar>
-
-  <!-- Selection Toolbar -->
   <ion-toolbar *ngIf="inSelectionMode" class="selection-toolbar">
     <ion-buttons slot="start">
       <ion-title class="selected-count">{{ selectedNotes.length }} Selected</ion-title>
@@ -34,8 +19,10 @@
       <ion-button (click)="deleteSelectedNotes()">
         <mat-icon>delete_outline</mat-icon>
       </ion-button>
-      <ion-button (click)="archiveSelectedNotes()">
-        <mat-icon>archive_outline</mat-icon>
+      <ion-button (click)="unarchiveSelectedNotes()">
+        <mat-icon class="material-symbols-outlined">
+          archive
+          </mat-icon>
       </ion-button>
       <ion-button (click)="shareSelectedNotes()">
         <mat-icon>share_social</mat-icon>
@@ -48,13 +35,8 @@
 </ion-header>
 
 <ion-content id="main-content" class="ion-padding">
-  <ion-fab vertical="bottom" horizontal="end" *ngIf="!inSearchMode">
-    <ion-fab-button (click)="navigateTo('create-new-note')">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
   <div class="cards-container">
-    <ion-card *ngFor="let note of inSearchMode ? filteredNotes : notes"
+    <ion-card *ngFor="let note of notes"
       class="note-card"
       [ngStyle]="{
         '--background': note.color,

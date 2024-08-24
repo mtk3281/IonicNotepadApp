@@ -18,22 +18,20 @@ export class NotesService {
 
   async saveNote(note: any) {
     if (this.localStorage) {
-      // await this.localStorage.set('note_' + Date.now(), note);
-        await this.localStorage.set(note.id, note); // Use the note's id as the key
-    
+      await this.localStorage.set(note.id, note); // Use the note's id as the key
     } else {
       console.error('Storage is not initialized');
     }
   }
 
-  async getNotes(): Promise<any[]> {
+  async getNotes(archiveStatus: boolean): Promise<any[]> {
     const notes: any[] = [];
     if (this.localStorage) {
       const keys = await this.localStorage.keys();
       for (const key of keys) {
         if (key.startsWith('note_')) {
           const note = await this.localStorage.get(key);
-          if (note) {
+          if (note && note.isArchived === archiveStatus) {
             notes.push(note);
           }
         }
@@ -45,25 +43,25 @@ export class NotesService {
   }
 
   async getNoteById(id: string) {
-    const notes = await this.getNotes();
-    return notes.find((note: any) => note.id === id);
+    if (this.localStorage) {
+      return await this.localStorage.get(id);
+    }
+    return null;
   }
 
-    async deleteNoteById(id: string) {
-      if (this.localStorage) {
-        await this.localStorage.remove(id);
-      } else {
-        console.error('Storage is not initialized');
-      }
+  async deleteNoteById(id: string) {
+    if (this.localStorage) {
+      await this.localStorage.remove(id);
+    } else {
+      console.error('Storage is not initialized');
     }
-  
+  }
 
   async updateNote(note: any) {
-    const notes = await this.getNotes();
-    const index = notes.findIndex((n: any) => n.id === note.id);
-    if (index > -1) {
-      notes[index] = note;
-      await this.storage.set('notes', JSON.stringify(notes));
+    if (this.localStorage) {
+      await this.localStorage.set(note.id, note); // Save the updated note back to storage
+    } else {
+      console.error('Storage is not initialized');
     }
   }
 }

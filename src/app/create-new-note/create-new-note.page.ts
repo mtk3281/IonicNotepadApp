@@ -94,7 +94,8 @@ export class CreateNewNotePage {
       content: this.noteContent,
       date: new Date(),
       color: this.noteColor,
-      bcolor: this.bColor,  // Include the border color
+      bcolor: this.bColor, 
+      isArchived: false
     };
     await this.notesService.saveNote(note);
     this.router.navigate(['/notes']);
