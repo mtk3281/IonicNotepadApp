@@ -22,7 +22,7 @@
         <mat-icon>arrow_back</mat-icon>
       </ion-button>
     </ion-buttons>
-    <ion-searchbar class="mysearch-bar" #searchBar (ionInput)="onSearch($event)" (ionClear)="onClearSearch()"></ion-searchbar>
+    <ion-searchbar class="mysearch-bar" #searchbar debounce="500" (ionInput)="onSearch($event)" (ionClear)="onClearSearch()"></ion-searchbar>
   </ion-toolbar>
 
   <!-- Selection Toolbar -->

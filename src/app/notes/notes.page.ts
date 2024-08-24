@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewChild, ElementRef, OnInit} from '@angular/core';
+import { Component, AfterViewInit, ViewChild, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { StatusBar } from '@capacitor/status-bar';
 import { IonMenu } from '@ionic/angular';
@@ -8,13 +8,14 @@ import { Share } from '@capacitor/share';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { SearchService } from '../search.service';
+import { IonSearchbar} from '@ionic/angular';
 
 @Component({
   selector: 'app-notes',
   templateUrl: './notes.page.html',
   styleUrls: ['./notes.page.scss'],
 })
-export class NotesPage implements OnInit {
+export class NotesPage implements OnInit, AfterViewInit{
 
 
   notes: any[] = [];
@@ -23,10 +24,8 @@ export class NotesPage implements OnInit {
   inSelectionMode = false;
   inSearchMode = false;
 
-
+  @ViewChild('searchbar', { static: false, read: IonSearchbar }) searchbar!: IonSearchbar;
   @ViewChild('mainMenu', { static: true }) mainMenu!: IonMenu;
-
-  @ViewChild('searchBar', { static: false }) searchBar!: ElementRef;
 
 
   currentPage: string = '';
@@ -38,6 +37,7 @@ export class NotesPage implements OnInit {
     private alertController: AlertController,
     private toastController: ToastController,
     private searchService: SearchService,
+    private cdr: ChangeDetectorRef
   ) {
     this.router.events.subscribe(() => {
       this.currentPage = this.router.url.split('/').pop() as string;
@@ -50,7 +50,6 @@ export class NotesPage implements OnInit {
         this.inSearchMode = false;
       }
     });
-    
     
   }
 
@@ -94,21 +93,32 @@ export class NotesPage implements OnInit {
     });
     toast.present();
   }
-
+  
+  
+  ngAfterViewInit() {
+    // Trigger change detection to ensure view is fully initialized
+    this.cdr.detectChanges();
+    if (this.inSearchMode) {
+      // Use a timeout to ensure the searchbar is ready
+      setTimeout(() => {
+        console.log('Setting focus');
+        this.searchbar.setFocus();
+      }, 300);
+    }
+  }
 
   activateSearchMode() {
     this.inSearchMode = true;
+    // Ensure that the focus logic is applied
+    this.cdr.detectChanges();
     setTimeout(() => {
-      this.searchBar.nativeElement.setFocus();
-    }, 300); // Delay to ensure the search bar is fully rendered
+      console.log('Setting focus in activateSearchMode');
+      this.searchbar.setFocus();
+    }, 300);
   }
 
   deactivateSearchMode() {
     this.inSearchMode = false;
-  }
-
-  onClearSearch() {
-    this.filteredNotes = [];  // Clear filtered notes
   }
 
   onSearch(event: any) {
@@ -118,6 +128,11 @@ export class NotesPage implements OnInit {
       note.content.toLowerCase().includes(query)
     ) : [];
   }
+
+  onClearSearch() {
+    this.filteredNotes = [];
+  }
+
 
   navigateTo(page: string) {
     this.router.navigate([page]);
