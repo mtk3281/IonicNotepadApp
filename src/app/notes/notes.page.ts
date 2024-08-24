@@ -212,6 +212,7 @@ export class NotesPage implements OnInit, AfterViewInit{
   }
 
   onCardClick(note: any) {
+    this.inSearchMode=false;
     if (this.inSelectionMode) {
       this.toggleNoteSelection(note);
     } else {

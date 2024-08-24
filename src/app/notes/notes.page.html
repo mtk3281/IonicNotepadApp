@@ -48,12 +48,11 @@
 </ion-header>
 
 <ion-content id="main-content" class="ion-padding">
-  <ion-fab vertical="bottom" horizontal="end">
+  <ion-fab vertical="bottom" horizontal="end" *ngIf="!inSearchMode">
     <ion-fab-button (click)="navigateTo('create-new-note')">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
   <div class="cards-container">
     <ion-card *ngFor="let note of inSearchMode ? filteredNotes : notes"
       class="note-card"
