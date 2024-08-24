@@ -1,0 +1,122 @@
+// /* Remove line separator */
+ion-header,
+ion-content {
+  box-shadow: none;
+  --box-shadow:none;
+}
+
+/* Set the background color of the entire page */
+ion-content {
+    --background: #ffffff; /* White background */
+    padding: 1px;
+  }
+  
+
+/* Toolbar styling */
+ion-toolbar {
+// --background: #ffffff; /* White background */
+    --color: #000000; /* Black color for text */
+    padding: 8px 4px;
+    justify-content: space-between;
+    height: 64px; /* Set a consistent height */
+}
+
+.toolbar-notes {
+--background: #fff;
+}
+
+ion-content {
+    --background: #ffffff;
+    height: 100%;
+    min-height: 100vh; /* Ensure it covers the viewport height */
+    display: flex;
+    flex-direction: column;
+  }
+  
+/* FAB button styling */
+ion-fab-button {
+    --background: #2b75ff; /* Black background */
+    --color: #ffffff; /* White icon color */
+    // --color: #fef1de;
+  }
+  
+  ion-fab {
+    position: fixed;
+    bottom: 40px; /* Adjust as needed */
+    right: 20px;  /* Adjust as needed */
+    z-index: 10; /* Make sure it stays above other elements */
+  }
+  
+  .content-calendar {
+      --background: #ffffff; /* Toolbar background color */
+      --color: #000000; /* Toolbar text color */
+      --border-color: #e0e0e0; /* Toolbar bottom border color */
+    }
+
+    .toolbar-calendar{
+        --background:white;
+    }
+
+  
+    .selected-date-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+  
+    .selected-date {
+      font-size: 24px;
+      font-weight: 500;
+      color: #333; /* Darker color for the date */
+    }
+  
+    .calendar-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: min-content;
+        width: 100%;
+        margin: 10px 0;
+        color: #818181;
+        background-color: rgb(110, 134, 255);
+        border-radius: 22px;
+        flex-direction: column;
+        align-content: space-between;
+    }
+  
+    .material-calendar {
+      width: 100%;
+      max-width: fit-content; /* Optional: Limit maximum width */
+      height: max-content;
+      --background: #ffffff; /* Calendar background color */
+      --color: #000000; /* Dark text color */
+      --border-color: #000000; /* Dark border color */
+      --border-radius: 4px; /* Material Design border radius */
+      --padding: 16px; /* Material Design padding */
+      margin:5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Material Design shadow */
+    }
+  
+    .notes-area {
+      margin-top: 20px;
+    }
+  
+  
+
+  .inner-scroll {
+    color: #818181;
+  }
+
+.material-calendar{
+    border-radius: 22px;
+    margin-top:5px;
+    margin-bottom:5px;
+
+}
+
+.date-display{
+    padding-top: 5px;
+    font-size: 1.4em;
+    font-weight: 548;
+}

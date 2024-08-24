@@ -11,18 +11,6 @@ body {
   font-family: var(--font-family);
 }
 
-.toolbar-notes{
-  padding-top: 6px;
-  padding-bottom: 4px;
-  border-bottom: 2px  solid #e2e2e2;
-}
-
-
-.toolbar-notes[_ngcontent-ng-c4147089924] {
-  --background: #ffffff;
-}
-
-// /* Remove line separator */
 ion-header,
 ion-content {
   box-shadow: none;
@@ -40,14 +28,6 @@ ion-content {
   padding: 1px;
 }
 
-/* Title styling */
-.app-title {
-  font-family: var(--font-family);
-  font-size: 25px;
-  font-weight: bold;
-  text-align: left;
-  color: #000000; /* Black color for the title */
-}
 /* Toolbar styling */
 ion-toolbar {
   // --background: #ffffff; /* White background */

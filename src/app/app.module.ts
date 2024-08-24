@@ -9,6 +9,8 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { NotesPage } from './notes/notes.page';
 import { MatIconModule } from '@angular/material/icon'; 
 import { QuillModule, QuillModules } from 'ngx-quill';
+import { NgCalendarModule } from 'ionic2-calendar';
+
 
 const modules: QuillModules = {
     toolbar: [
@@ -32,9 +34,8 @@ const modules: QuillModules = {
     QuillModule.forRoot({
       modules,
       placeholder: 'Notes content here...',
-
-    
-    })
+    }),
+    NgCalendarModule,
   
     ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

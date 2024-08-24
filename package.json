@@ -31,6 +31,7 @@
     "@capacitor/status-bar": "^6.0.1",
     "@ionic/angular": "^8.0.0",
     "@ionic/storage-angular": "^4.0.0",
+    "ionic2-calendar": "^2.5.0",
     "ionicons": "^7.0.0",
     "material-design-icons": "^3.0.1",
     "ngx-quill": "^26.0.8",
