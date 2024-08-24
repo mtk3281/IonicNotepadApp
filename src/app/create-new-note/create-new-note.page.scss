@@ -80,7 +80,7 @@ p{
   --padding-top: 16px;
 }
 
-.title-text,.note-text {
+.title-text{
   --placeholder-color: rgb(21, 21, 21);
   padding-left: 10px;
   margin-left: 15px;
@@ -90,26 +90,22 @@ p{
   height: auto; /* Let the height be controlled by content */
   overflow-y: hidden; /* Hide scrollbars */
   resize: none; /* Prevent manual resizing */
-}
-
-.title-text{
   font-size: 1.45em;
   font-weight: 548;
   line-height: 1.45em; /* Ensure the line height matches the font size */
-
+  --highlight-color:disabled;
+  caret-color:rgb(58, 107, 255);
+  --highlight-color-focused:disabled;
 }
+
+
 .note-text {
-  // margin-top: 6px;
-  font-size: 1.1em;
   color: rgb(13, 13, 13);
+  width:100%;
   height: auto; /* Let the height be controlled by content */
   overflow-y: hidden; /* Hide scrollbars */
-  line-height: 1.1em; /* Ensure the line height matches the font size */
   resize: none; /* Prevent manual resizing */
-}
+  --placeholder-color: rgb(21, 21, 21);
+  caret-color:rgb(12, 12, 12);
 
-.title-text,.note-text{
---highlight-color:disabled;
-caret-color:rgb(58, 107, 255);
---highlight-color-focused:disabled;
 }

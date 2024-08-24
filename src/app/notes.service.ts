@@ -43,4 +43,27 @@ export class NotesService {
     }
     return notes;
   }
+
+  async getNoteById(id: string) {
+    const notes = await this.getNotes();
+    return notes.find((note: any) => note.id === id);
+  }
+
+    async deleteNoteById(id: string) {
+      if (this.localStorage) {
+        await this.localStorage.remove(id);
+      } else {
+        console.error('Storage is not initialized');
+      }
+    }
+  
+
+  async updateNote(note: any) {
+    const notes = await this.getNotes();
+    const index = notes.findIndex((n: any) => n.id === note.id);
+    if (index > -1) {
+      notes[index] = note;
+      await this.storage.set('notes', JSON.stringify(notes));
+    }
+  }
 }

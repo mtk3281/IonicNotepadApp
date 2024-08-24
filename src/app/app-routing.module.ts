@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+  },
+  {
+    path: 'bookmark',
+    loadChildren: () => import('./bookmark/bookmark.module').then( m => m.BookmarkPageModule)
   }
 ];
 

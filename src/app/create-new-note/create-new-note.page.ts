@@ -5,6 +5,7 @@ import { Storage } from '@ionic/storage-angular';
 import { Router } from '@angular/router';
 import { NotesService } from '../notes.service';
 import { Share } from '@capacitor/share';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-create-new-note',
@@ -12,6 +13,27 @@ import { Share } from '@capacitor/share';
   styleUrls: ['./create-new-note.page.scss'],
 })
 export class CreateNewNotePage {
+
+  quillConfig = {
+    toolbar: [
+      ['bold', 'italic', 'underline'], 
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }], 
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      [{ 'color': [] }, { 'background': [] }],  
+      [{ 'indent': '-1'}, { 'indent': '+1' }],
+      ['code-block'], 
+    ]
+  };
+
+ // Customize styles here
+ editorStyle = {
+  height: 'calc(100vh - 60px)', // Adjust height to fill the screen, minus header/footer height
+  backgroundColor: 'white',
+  color: 'black',
+  fontSize: 'medium',  // Set font size to medium
+  padding: '4px', 
+};
+
   currentDate: Date;
   noteId: string | undefined;
   noteTitle: string = '';
@@ -28,7 +50,9 @@ export class CreateNewNotePage {
     private popoverController: PopoverController, 
     private storage: Storage, 
     private router: Router, 
-    private notesService: NotesService
+    private notesService: NotesService,
+    private toastController: ToastController 
+
   ) {
 
     this.storage.create(); 
@@ -74,6 +98,8 @@ export class CreateNewNotePage {
     };
     await this.notesService.saveNote(note);
     this.router.navigate(['/notes']);
+    this.presentToast('Note created successfully.');  // Show toast message
+
   }
   
 
@@ -149,6 +175,18 @@ export class CreateNewNotePage {
     return await popover.present();
   }
 
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000,  // Duration in milliseconds
+      position: 'bottom',  // Position on the screen
+      color: 'dark',  // Customize the color if needed
+      cssClass: 'toast-custom',
+    });
+    toast.present();
+  }
+
+
   async deleteNote() {
     if (this.noteId) {
       await this.storage.remove(this.noteId);
@@ -156,18 +194,31 @@ export class CreateNewNotePage {
     this.noteTitle = '';
     this.noteContent = '';
     this.router.navigate(['/notes']);
+    this.presentToast('Note deleted successfully.');  // Show toast message
+
   }
 
-  // Method to share the note
+
+  private htmlToText(html: string): string {
+    const temporaryElement = document.createElement('div');
+    temporaryElement.innerHTML = html;
+    return temporaryElement.textContent || temporaryElement.innerText || '';
+  }
+
+
   async shareNote() {
     try {
+      // Convert HTML content to plain text
+      const plainTextContent = this.htmlToText(this.noteContent);
+      
       await Share.share({
         title: this.noteTitle,
-        text: `Title: ${this.noteTitle}\n\nContent:\n${this.noteContent}`,
+        text: `Title: ${this.noteTitle}\n\nContent:\n${plainTextContent}`,
         dialogTitle: 'Share Note'
       });
     } catch (error) {
       console.error('Error sharing note:', error);
     }
   }
+
 }

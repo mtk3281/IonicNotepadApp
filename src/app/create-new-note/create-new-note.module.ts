@@ -7,13 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { CreateNewNotePageRoutingModule } from './create-new-note-routing.module';
 
 import { CreateNewNotePage } from './create-new-note.page';
+import { QuillModule,QuillModules } from 'ngx-quill';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CreateNewNotePageRoutingModule
+    CreateNewNotePageRoutingModule,
+    QuillModule.forRoot(),
   ],
   declarations: [CreateNewNotePage]
 })

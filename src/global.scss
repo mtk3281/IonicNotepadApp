@@ -37,3 +37,41 @@
 @import "@ionic/angular/css/palettes/dark.system.css";
 
 @import '~material-design-icons/iconfont/material-icons.css';
+@import '~quill/dist/quill.snow.css';
+
+
+.ql-editor{
+    width: 100%;
+}
+
+.ql-editor.ql-blank::before{
+    font-style: normal;
+    padding-left: 4px;
+    font-size: 'medium',  // Set font size to medium
+
+}
+
+.ql-toolbar.ql-snow{
+    background-color: whitesmoke;
+    border : 1px solid #cecece;
+}
+
+.ql-toolbar.ql-snow .ql-formats {
+    margin-right: 4px;
+}
+
+
+.toast-custom {
+    --background: #000;        // Black background color
+    --color: #fff;             // White text color
+    --border-radius: 18px;     // Rounded corners
+    --box-shadow: none;        // No shadow
+    --padding-start: 15px;     // Padding on the left
+    --padding-end: 15px;       // Padding on the right
+    --padding-top:15px;       // Padding on the top
+    --padding-bottom: 25px;    // Padding on the bottom
+    --margin-bottom:25px;
+    --max-width: fit-content;  // Width adjusts to fit the content
+    --min-width: 150px;        // Optional: Minimum width to prevent too narrow appearance
+    --text-align: center;      // Center the text
+  }

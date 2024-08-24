@@ -1,38 +1,47 @@
 <ion-header>
-  <ion-toolbar *ngIf="!inSelectionMode" class="toolbar-notes">
+  <!-- Normal Toolbar -->
+  <ion-toolbar *ngIf="!inSelectionMode && !inSearchMode" class="toolbar-notes">
     <ion-buttons slot="start">
       <ion-menu-button style="font-weight: bold; color: rgb(0, 0, 0);"></ion-menu-button>
     </ion-buttons>
     <ion-title class="app-title">Notepad</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="enterSelectionMode()">
-        <mat-icon> check_box_outline_blank</mat-icon>
+        <mat-icon>check_box_outline_blank</mat-icon>
       </ion-button>
-      <ion-button (click)="onSearchClick()">
-        <mat-icon> search</mat-icon>
-
+      <ion-button (click)="activateSearchMode()">
+        <mat-icon>search</mat-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-  
+
+  <!-- Search Toolbar -->
+  <ion-toolbar *ngIf="inSearchMode" class="toolbar-search">
+    <ion-buttons slot="start">
+      <ion-button (click)="deactivateSearchMode()">
+        <mat-icon>arrow_back</mat-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-searchbar class="mysearch-bar" #searchBar (ionInput)="onSearch($event)" (ionClear)="onClearSearch()"></ion-searchbar>
+  </ion-toolbar>
+
+  <!-- Selection Toolbar -->
   <ion-toolbar *ngIf="inSelectionMode" class="selection-toolbar">
     <ion-buttons slot="start">
       <ion-title class="selected-count">{{ selectedNotes.length }} Selected</ion-title>
     </ion-buttons>
     <ion-buttons slot="end">
-
       <ion-button (click)="deleteSelectedNotes()">
         <mat-icon>delete_outline</mat-icon>
       </ion-button>
       <ion-button (click)="archiveSelectedNotes()">
         <mat-icon>bookmark_outline</mat-icon>
       </ion-button>
-      <ion-button (click)="shareSelectedNotes()">        
-       <mat-icon>share_social</mat-icon>
+      <ion-button (click)="shareSelectedNotes()">
+        <mat-icon>share_social</mat-icon>
       </ion-button>
       <ion-button (click)="exitSelectionMode()">
         <mat-icon>close</mat-icon>
-
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -46,7 +55,7 @@
   </ion-fab>
 
   <div class="cards-container">
-    <ion-card *ngFor="let note of notes"
+    <ion-card *ngFor="let note of inSearchMode ? filteredNotes : notes"
       class="note-card"
       [ngStyle]="{
         '--background': note.color,
@@ -60,10 +69,8 @@
       <ion-card-header>
         <ion-card-title>{{ note.title }}</ion-card-title>
       </ion-card-header>
-      <ion-card-content>
-        {{ note.content }}
+      <ion-card-content [innerHTML]="note.content">
       </ion-card-content>
     </ion-card>
   </div>
-  
 </ion-content>

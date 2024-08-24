@@ -19,19 +19,19 @@ body {
 
 
 .toolbar-notes[_ngcontent-ng-c4147089924] {
-  --background: #000000;
+  --background: #ffffff;
 }
 
-// // /* Remove line separator */
-// ion-header,
-// ion-content {
-//   box-shadow: none;
-//   --box-shadow:none;
-// }
+// /* Remove line separator */
+ion-header,
+ion-content {
+  box-shadow: none;
+  --box-shadow:none;
+}
 
 ion-menu-button{
-  --color:white !important;
-   color:white !important;
+  --color:rgb(0, 0, 0) !important;
+   color:rgb(0, 0, 0) !important;
 }
 
 /* Set the background color of the entire page */
@@ -46,12 +46,12 @@ ion-content {
   font-size: 25px;
   font-weight: bold;
   text-align: left;
-  color: #ffffff; /* Black color for the title */
+  color: #000000; /* Black color for the title */
 }
 /* Toolbar styling */
 ion-toolbar {
   // --background: #ffffff; /* White background */
-  --color: #ffffff; /* Black color for text */
+  --color: #000000; /* Black color for text */
   padding: 8px 4px;
   justify-content: space-between;
   height: 64px; /* Set a consistent height */
@@ -165,10 +165,47 @@ ion-fab {
   // font-size: 0.9em; /* Adjust size as needed */
 }
 
-.note-card {
-  transition: border 0.25s ease
+/* General toolbar styles */
+.toolbar-notes, .toolbar-search {
+  transition: opacity 0.5s ease-in-out;
 }
 
+.toolbar-notes.ng-enter, .toolbar-search.ng-enter {
+  opacity: 0;
+}
 
+.toolbar-notes.ng-enter-active, .toolbar-search.ng-enter-active {
+  opacity: 1;
+}
 
+.toolbar-notes.ng-leave, .toolbar-search.ng-leave {
+  opacity: 1;
+}
 
+.toolbar-notes.ng-leave-active, .toolbar-search.ng-leave-active {
+  opacity: 0;
+}
+
+/* Search Bar Specific Styles */
+ion-toolbar.toolbar-search {
+  --background: #fff; /* White background for the toolbar */
+  width: auto;
+}
+
+.mysearch-bar {
+  --icon-color:black;
+  --background: #F5F6F6; /* Light grey background */
+  --placeholder-color: #000000; /* Black color for placeholder text */
+  --color: #000000;
+  --border-radius: 12px; /* Rounded corners */
+    margin: 6px;
+  --border-radius: 18px; /* Rounded corners */
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --padding-top: 25px;
+  --padding-bottom: 5px;
+  padding-right: 18px; /* Add padding to the right */
+  padding-top: 6px; /* Add padding to the top */
+  --placeholder-font-style: normal; /* Remove italic from placeholder text */
+  --box-shadow: none;
+}

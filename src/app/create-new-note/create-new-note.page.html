@@ -32,7 +32,15 @@
   <div class="bottom-border"></div>
 </ion-header>
 
-<ion-content class="note-content">
+<!-- <ion-content class="note-content">
   <ion-textarea [(ngModel)]="noteTitle" placeholder="Title" auto-grow="true" cols="1" rows="1" class="title-text"></ion-textarea>
   <ion-textarea [(ngModel)]="noteContent" placeholder="Note here" auto-grow="true" class="note-text" cols="1" rows="1"></ion-textarea>
-</ion-content>
+</ion-content> -->
+
+
+<ion-content >
+  <ion-textarea [(ngModel)]="noteTitle" placeholder="Title" auto-grow="true" cols="1" rows="1" class="title-text"></ion-textarea>
+
+<quill-editor [styles]="editorStyle" [(ngModel)]="noteContent" class="note-text"></quill-editor>
+  </ion-content>
+  
