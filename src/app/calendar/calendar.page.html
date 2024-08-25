@@ -11,33 +11,41 @@
   <!-- Centered Calendar -->
   <div class="calendar-container">
     <ion-datetime
+      type="date"
       [(ngModel)]="selectedDate"
       (ionChange)="onDateSelected($event)"
       display-format="MMM d, yyyy"
+      presentation="date"
+      [multiple]="false"
+
       class="material-calendar">
     </ion-datetime>
   </div>
+  
+    <!-- FAB Button for Creating a Note -->
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="selectedDate">
+      <ion-fab-button (click)="createNote()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
 
-  <!-- Flexible Area for Notes -->
-  <div class="notes-area">
+  <div class="cards-container">
     <ng-container *ngIf="notes && notes.length > 0">
-      <ion-list>
-        <ion-item *ngFor="let note of notes" (click)="onCardClick(note)">
-          <ion-label>
-            <h3>{{ note.title }}</h3>
-            <p>{{ note.content }}</p>
-          </ion-label>
-        </ion-item>
-      </ion-list>
+    <ion-card *ngFor="let note of notes"
+      class="note-card"
+      [ngStyle]="{
+        '--background': note.color,
+        'border-color': note.bcolor,
+        'border-width': '2px',
+        'border-style': 'solid',
+        'border-radius':'20px'
+      }"
+      (click)="onCardClick(note)">
+      <ion-card-header>
+        <ion-card-title>{{ note.title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content [innerHTML]="note.content"> </ion-card-content>
+    </ion-card>
     </ng-container>
-    
   </div>
-
-  <!-- FAB Button for Creating a Note -->
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="selectedDate">
-    <ion-fab-button (click)="createNote()">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-
 </ion-content>

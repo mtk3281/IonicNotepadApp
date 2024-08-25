@@ -153,11 +153,13 @@ export class CalendarPage implements OnInit, AfterViewInit {
 
   async createNote() {
     console.log('Selected Date:', this.selectedDate);
+  
+    // Store the previous route
     this.router.navigate(['/create-new-note'], {
-
-      state: { date: this.selectedDate }
+      state: { date: this.selectedDate}
     });
-  }  
+  }
+  
   
   
 }

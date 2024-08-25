@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { NotesService } from '../notes.service';
 import { Share } from '@capacitor/share';
 import { ToastController } from '@ionic/angular';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-create-new-note',
@@ -52,7 +53,8 @@ export class CreateNewNotePage {
     private storage: Storage, 
     private router: Router, 
     private notesService: NotesService,
-    private toastController: ToastController 
+    private toastController: ToastController,
+    private location: Location
 
   ) {
     this.storage.create(); 
@@ -112,8 +114,8 @@ console.log('Current Date in CreateNewNotePage:', this.currentDate);
       isArchived: false
     };
     await this.notesService.saveNote(note);
-    this.router.navigate(['/notes']);
     this.presentToast('Note created successfully.');  // Show toast message
+    this.location.back(); // Navigate back to the previous page (calendar page)
   }
   
 

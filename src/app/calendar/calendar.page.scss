@@ -15,11 +15,11 @@ ion-content {
 /* Toolbar styling */
 ion-toolbar {
 // --background: #ffffff; /* White background */
-    --color: #000000; /* Black color for text */
+--color: #000000; /* Black color for text */
     padding: 8px 4px;
     justify-content: space-between;
     height: 64px; /* Set a consistent height */
-}
+  }
 
 .toolbar-notes {
 --background: #fff;
@@ -33,7 +33,7 @@ ion-content {
     flex-direction: column;
   }
   
-/* FAB button styling */
+  /* FAB button styling */
 ion-fab-button {
     --background: #2b75ff; /* Black background */
     --color: #ffffff; /* White icon color */
@@ -47,82 +47,157 @@ ion-fab-button {
     z-index: 10; /* Make sure it stays above other elements */
   }
   
-  .content-calendar {
-      --background: #ffffff; /* Toolbar background color */
-      --color: #000000; /* Toolbar text color */
-      --border-color: #e0e0e0; /* Toolbar bottom border color */
-    }
-
-    .toolbar-calendar{
-        --background:white;
-    }
-
-  
-    .selected-date-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 20px 0;
-    }
-  
-    .selected-date {
-      font-size: 24px;
-      font-weight: 500;
-      color: #333; /* Darker color for the date */
-    }
-  
-    .calendar-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      max-width: 800px; /* Limit the maximum width to 800px */
-      margin: 10px auto; /* Center the container */
-      color: #818181;
-      background-color: rgb(110, 134, 255);
-      border-radius: 22px;
-      padding: 5px; /* Add some padding for better spacing */
-      box-sizing: border-box; /* Ensure padding doesn't affect the width */
-    }
-    
-    .material-calendar {
-      width: 100%;
-      max-width: 100%; /* Ensure the calendar takes up the full width of the container */
-      aspect-ratio: 1; /* Maintain the aspect ratio of the calendar */
-      --background: #ffffff;
-      --color: #000000;
-      --border-color: #000000;
-      --border-radius: 4px;
-      --padding: 16px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-    
-    /* Optional: Add media queries for larger screens */
-    @media (min-width: 800px) {
-      .calendar-container {
-        max-width: 800px;
-      }
-    }
-    
-    .notes-area {
-      margin-top: 20px;
-    }
-  
-  
-
-  .inner-scroll {
-    color: #818181;
-  }
-
-.material-calendar{
-    border-radius: 22px;
-    margin-top:5px;
-    margin-bottom:5px;
-
-}
 
 .date-display{
-    padding-top: 5px;
-    font-size: 1.4em;
-    font-weight: 548;
+  padding-top: 5px;
+  font-size: 1.4em;
+  font-weight: 548;
+}
+
+
+/* Container for the cards */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  flex: 1; // Allows notes area to take up remaining space
+  padding: 16px;
+  overflow-y: auto; // Enables vertical scrolling for notes area
+  margin-bottom: 30px;
+  margin-top: 20px;
+  padding-bottom: 40px;
+}
+
+.note-card {
+  margin-top: 6px;
+  margin-left: 6px;
+  margin-right: 6px;
+  margin-bottom: 6px;
+
+  flex: 1 1 auto; 
+  --background: #ededed; /* Card background color */
+  box-shadow: none; /* Remove shadow */
+  padding: 0px; /* Add padding inside the card */
+  text-align: left; /* Align text to the left */
+}
+
+/* Title styling */
+.note-card ion-card-title {
+  font-family: 'Roboto', sans-serif; /* Roboto for title */
+  font-weight: bold; /* Bold title */
+  font-size: 18px; /* Larger title font size */
+  color: #000000; /* Black color for title */
+  margin-bottom: 0px; /* Space below title */
+}
+
+/* Content styling */
+.note-card ion-card-content {
+  font-family: 'sans-serif'; /* Sans-serif for content */
+  font-weight: normal; /* Regular content */
+  font-size: 14px; /* Smaller than title */
+  color: #333; /* Dark grey color for text */
+}
+
+.toolbar-calendar{
+  --background:white;
+}
+
+
+.content-calendar {
+  --background: #ffffff; /* Toolbar background color */
+  --color: #000000; /* Toolbar text color */
+  --border-color: #e0e0e0; /* Toolbar bottom border color */
+  --overflow: auto;
+}
+
+.calendar-container {
+  min-width: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 96%;
+  max-width: 550px; /* Limit the maximum width to 800px */
+  margin: 10px auto; /* Center the container */
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 22px;
+  padding: 6px; /* Add some padding for better spacing */
+  box-sizing: border-box; /* Ensure padding doesn't affect the width */
+}
+
+.material-calendar {
+  width: 100%;
+  max-width: 100%; /* Ensure the calendar takes up the full width of the container */
+  aspect-ratio: 1; /* Maintain the aspect ratio of the calendar */
+  --border-radius: 4px;
+  border-radius: 22px;
+
+}
+    
+  /* Optional: Add media queries for larger screens */
+@media (min-width: 550px) {
+  .calendar-container {
+    max-width: 550px;
+  }
+}
+  
+// /* General Background */
+// ion-datetime {
+//   --background: rgb(212, 229, 255); /* Light blue background */
+//   --background-rgb: 212, 229, 255;
+//   --wheel-highlight-background: rgb(222, 213, 255);
+//   --wheel-highlight-border-radius: 48px;
+//   --wheel-fade-background-rgb: 212, 229, 255;
+// }
+
+// /* Calendar Days */
+// ion-datetime::part(calendar-day) {
+//   font-size: medium;
+//   color: #4a4a4a; /* Dark grey for regular days */
+// }
+
+// ion-datetime::part(calendar-day today) {
+//   color: #4782c0; /* Dark blue for today */
+// }
+
+// ion-datetime::part(calendar-day):focus {
+//   background-color: rgba(41, 26, 207, 0.1);
+//   box-shadow: 0px 0px 0px 4px rgba(255, 255, 255, 0);
+// }
+
+// /* Active Day (Material Design) */
+// ion-datetime.md::part(calendar-day active),
+// ion-datetime.md::part(calendar-day active):focus {
+//   background-color: #85aaff; /* Light blue for active day */
+//   border-color: #0066ff; /* Bright blue border for active day */
+//   color: #fff; /* White text for active day */
+// }
+
+// /* Today’s Date Border (Material Design) */
+// ion-datetime.md::part(calendar-day today) {
+//   border-color: #0056b3; /* Dark blue border for today */
+// }
+
+// /* Active Day (iOS Style) */
+// ion-datetime.ios::part(calendar-day active),
+// ion-datetime.ios::part(calendar-day active):focus {
+//   background-color: rgba(41, 128, 185, 0.3); /* Lighter blue for active day */
+//   color: #729ebc; /* Medium blue text for active day */
+// }
+
+// /* Wheel Items */
+// ion-datetime::part(wheel-item) {
+//   color: rgb(44, 62, 80); /* Dark blue text for wheel items */
+// }
+
+// ion-datetime::part(wheel-item active) {
+//   color: rgb(41, 128, 185); /* Bright blue text for active wheel item */
+// }
+
+
+ion-datetime {
+  --background: #d4e5ff; /* Light blue background */
+  --background-rgb: 212, 229, 255;
+
+  border-radius: 16px;
+  box-shadow: rgba(66, 75, 255, 0.3) 0px 10px 15px -3px; /* Blue-themed shadow */
 }
