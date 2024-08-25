@@ -5,9 +5,16 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">settings</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-datetime
+  type="date"
+  [(ngModel)]="selectedDate"
+  (ionChange)="onDateSelected($event)"
+  display-format="MMM d, yyyy"
+  presentation="date"
+  mode="md"
+  size="cover"
+  class="material-calendar">
+  <span slot="title">Select Date</span>
+</ion-datetime>
+
 </ion-content>

@@ -62,9 +62,6 @@ export class CalendarPage implements OnInit, AfterViewInit {
   }  
 
   onDateSelected(event: any) {
-    const date = new Date(event.detail.value);
-    this.selectedDate = date.toISOString(); // Store in ISO format for the calendar
-  
     const formattedDate = this.formatDateForNotes(this.selectedDate); // Convert to dd/MM/yyyy format
     this.loadNotesForDate(formattedDate); // Load notes for the selected date
   }
@@ -87,7 +84,6 @@ export class CalendarPage implements OnInit, AfterViewInit {
   }
   
   
-
   async presentToast(message: string) {
     const toast = await this.toastController.create({
       message: message,

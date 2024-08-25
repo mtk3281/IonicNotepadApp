@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button style="font-weight: bold; color: rgb(0, 0, 0);"></ion-menu-button>
     </ion-buttons>
-    <ion-title  class="date-display">{{ selectedDate | date: 'MMMM d, yyyy' }}</ion-title>
+    <ion-title  class="date-display">Calendar</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,9 +16,10 @@
       (ionChange)="onDateSelected($event)"
       display-format="MMM d, yyyy"
       presentation="date"
-      [multiple]="false"
-
+      mode="md"
+      size="cover"
       class="material-calendar">
+      <span slot="title">Select Date</span>
     </ion-datetime>
   </div>
   

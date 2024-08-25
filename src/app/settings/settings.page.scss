@@ -1,0 +1,32 @@
+
+.calendar-container {
+    min-width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 96%;
+    max-width: 550px; /* Limit the maximum width to 800px */
+    margin: 10px auto; /* Center the container */
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 22px;
+    padding: 6px; /* Add some padding for better spacing */
+    box-sizing: border-box; /* Ensure padding doesn't affect the width */
+  }
+  
+  .material-calendar {
+    width: 100%;
+    max-width: 100%; /* Ensure the calendar takes up the full width of the container */
+    --border-radius: 4px;
+    border-radius: 22px;
+  
+  }
+  
+  
+  ion-datetime {
+    --background: #d4e5ff; /* Light blue background */
+    --background-rgb: 212, 229, 255;
+  
+    border-radius: 16px;
+    box-shadow: rgba(66, 75, 255, 0.3) 0px 10px 15px -3px; /* Blue-themed shadow */
+  }
+  

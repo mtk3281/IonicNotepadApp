@@ -44,7 +44,7 @@ export class CreateNewNotePage {
   selectedDate: string = ''; 
 
   private colors = [
-    '#f1fff2', '#fedef3', '#fef1de', '#e3f2fd', '#fff9c4', '#f8bbd0', '#d1c4e9'
+    '#d4e5ff'
   ];
   
 

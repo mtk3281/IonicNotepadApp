@@ -104,10 +104,10 @@ ion-fab-button {
 
 
 .content-calendar {
-  --background: #ffffff; /* Toolbar background color */
-  --color: #000000; /* Toolbar text color */
-  --border-color: #e0e0e0; /* Toolbar bottom border color */
-  --overflow: auto;
+  background: #ffffff; /* Toolbar background color */
+  color: #000000; /* Toolbar text color */
+  border-color: #e0e0e0; /* Toolbar bottom border color */
+  overflow: auto;
 }
 
 .calendar-container {
@@ -127,71 +127,10 @@ ion-fab-button {
 .material-calendar {
   width: 100%;
   max-width: 100%; /* Ensure the calendar takes up the full width of the container */
-  aspect-ratio: 1; /* Maintain the aspect ratio of the calendar */
   --border-radius: 4px;
   border-radius: 22px;
 
 }
-    
-  /* Optional: Add media queries for larger screens */
-@media (min-width: 550px) {
-  .calendar-container {
-    max-width: 550px;
-  }
-}
-  
-// /* General Background */
-// ion-datetime {
-//   --background: rgb(212, 229, 255); /* Light blue background */
-//   --background-rgb: 212, 229, 255;
-//   --wheel-highlight-background: rgb(222, 213, 255);
-//   --wheel-highlight-border-radius: 48px;
-//   --wheel-fade-background-rgb: 212, 229, 255;
-// }
-
-// /* Calendar Days */
-// ion-datetime::part(calendar-day) {
-//   font-size: medium;
-//   color: #4a4a4a; /* Dark grey for regular days */
-// }
-
-// ion-datetime::part(calendar-day today) {
-//   color: #4782c0; /* Dark blue for today */
-// }
-
-// ion-datetime::part(calendar-day):focus {
-//   background-color: rgba(41, 26, 207, 0.1);
-//   box-shadow: 0px 0px 0px 4px rgba(255, 255, 255, 0);
-// }
-
-// /* Active Day (Material Design) */
-// ion-datetime.md::part(calendar-day active),
-// ion-datetime.md::part(calendar-day active):focus {
-//   background-color: #85aaff; /* Light blue for active day */
-//   border-color: #0066ff; /* Bright blue border for active day */
-//   color: #fff; /* White text for active day */
-// }
-
-// /* Today’s Date Border (Material Design) */
-// ion-datetime.md::part(calendar-day today) {
-//   border-color: #0056b3; /* Dark blue border for today */
-// }
-
-// /* Active Day (iOS Style) */
-// ion-datetime.ios::part(calendar-day active),
-// ion-datetime.ios::part(calendar-day active):focus {
-//   background-color: rgba(41, 128, 185, 0.3); /* Lighter blue for active day */
-//   color: #729ebc; /* Medium blue text for active day */
-// }
-
-// /* Wheel Items */
-// ion-datetime::part(wheel-item) {
-//   color: rgb(44, 62, 80); /* Dark blue text for wheel items */
-// }
-
-// ion-datetime::part(wheel-item active) {
-//   color: rgb(41, 128, 185); /* Bright blue text for active wheel item */
-// }
 
 
 ion-datetime {
