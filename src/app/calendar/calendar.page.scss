@@ -71,33 +71,39 @@ ion-fab-button {
       color: #333; /* Darker color for the date */
     }
   
-    .calendar-container{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: min-content;
-        width: 100%;
-        margin: 10px 0;
-        color: #818181;
-        background-color: rgb(110, 134, 255);
-        border-radius: 22px;
-        flex-direction: column;
-        align-content: space-between;
+    .calendar-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 800px; /* Limit the maximum width to 800px */
+      margin: 10px auto; /* Center the container */
+      color: #818181;
+      background-color: rgb(110, 134, 255);
+      border-radius: 22px;
+      padding: 5px; /* Add some padding for better spacing */
+      box-sizing: border-box; /* Ensure padding doesn't affect the width */
     }
-  
+    
     .material-calendar {
       width: 100%;
-      max-width: fit-content; /* Optional: Limit maximum width */
-      height: max-content;
-      --background: #ffffff; /* Calendar background color */
-      --color: #000000; /* Dark text color */
-      --border-color: #000000; /* Dark border color */
-      --border-radius: 4px; /* Material Design border radius */
-      --padding: 16px; /* Material Design padding */
-      margin:5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Material Design shadow */
+      max-width: 100%; /* Ensure the calendar takes up the full width of the container */
+      aspect-ratio: 1; /* Maintain the aspect ratio of the calendar */
+      --background: #ffffff;
+      --color: #000000;
+      --border-color: #000000;
+      --border-radius: 4px;
+      --padding: 16px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
-  
+    
+    /* Optional: Add media queries for larger screens */
+    @media (min-width: 800px) {
+      .calendar-container {
+        max-width: 800px;
+      }
+    }
+    
     .notes-area {
       margin-top: 20px;
     }
