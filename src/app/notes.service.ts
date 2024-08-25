@@ -42,6 +42,7 @@ export class NotesService {
     return notes;
   }
 
+
   async getNoteById(id: string) {
     if (this.localStorage) {
       return await this.localStorage.get(id);
@@ -64,4 +65,26 @@ export class NotesService {
       console.error('Storage is not initialized');
     }
   }
+
+  async getNoteByDate(date: string): Promise<any[]> {
+    const notes: any[] = [];
+    if (this.localStorage) {
+      const keys = await this.localStorage.keys();
+      for (const key of keys) {
+        if (key.startsWith('note_')) {
+          const note = await this.localStorage.get(key);
+          if (note && note.date && note.isArchived === false) { // Ensure isArchived is false
+            const noteDate = new Date(note.date).toLocaleDateString('en-GB'); // Convert to dd/mm/yyyy format
+            if (noteDate === date) {
+              notes.push(note);
+            }
+          }
+        }
+      }
+    } else {
+      console.error('Storage is not initialized');
+    }
+    return notes;
+  }
+  
 }

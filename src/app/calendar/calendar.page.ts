@@ -14,9 +14,7 @@ import { AlertController, ToastController } from '@ionic/angular';
 export class CalendarPage implements OnInit, AfterViewInit {
 
   selectedDate: string = new Date().toISOString();
-
   notes: any[] = [];
-  
   filteredNotes: any[] = [];
   inSelectionMode = false;
   
@@ -32,28 +30,43 @@ export class CalendarPage implements OnInit, AfterViewInit {
   ) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.loadNotesForDate(this.selectedDate);
+        const formattedDate = this.formatDateForNotes(this.selectedDate);
+        this.loadNotesForDate(formattedDate);
       }
     });
   }
 
   async ngOnInit() {
+    const today = new Date();
+    this.selectedDate = today.toISOString(); // Store in ISO format for the calendar
+  
+    const formattedDate = this.formatDateForNotes(this.selectedDate); // Format to dd/MM/yyyy
     await this.storage.create();
-    await this.loadNotesForDate(this.selectedDate);
+    await this.loadNotesForDate(formattedDate); // Load notes for today's date
     await StatusBar.setBackgroundColor({ color: '#ffffff' });
   }
-
+  
   ngAfterViewInit() {
     this.cdr.detectChanges();
   }
 
-  async loadNotesForDate(date: string) {
-    this.notes = await this.notesService.getNoteById(date);  // Assumes a method to fetch notes by date
+  formatDateForNotes(isoDate: string): string {
+    const date = new Date(isoDate);
+    return date.toLocaleDateString('en-GB'); // Convert to dd/MM/yyyy format
   }
 
+  async loadNotesForDate(date: string) {
+    console.log('Loading notes for date:', date); // Ensure this is always in dd/MM/yyyy format
+    this.notes = await this.notesService.getNoteByDate(date);
+    console.log('Fetched notes:', this.notes);
+  }  
+
   onDateSelected(event: any) {
-    this.selectedDate = event.detail.value;
-    this.loadNotesForDate(this.selectedDate);
+    const date = new Date(event.detail.value);
+    this.selectedDate = date.toISOString(); // Store in ISO format for the calendar
+  
+    const formattedDate = this.formatDateForNotes(this.selectedDate); // Convert to dd/MM/yyyy format
+    this.loadNotesForDate(formattedDate); // Load notes for the selected date
   }
 
   openNote(note: any) {
@@ -61,10 +74,19 @@ export class CalendarPage implements OnInit, AfterViewInit {
       this.toggleNoteSelection(note);
     } else {
       this.router.navigate(['/create-new-note'], {
-        state: { note: { id: note.id, title: note.title, content: note.content, date: this.selectedDate } }
+        state: {
+          note: {
+            id: note.id,
+            title: note.title,
+            content: note.content,
+            date: note.date // Pass the saved date
+          }
+        }
       });
     }
   }
+  
+  
 
   async presentToast(message: string) {
     const toast = await this.toastController.create({
@@ -109,7 +131,8 @@ export class CalendarPage implements OnInit, AfterViewInit {
             for (const note of this.filteredNotes) {
               await this.notesService.deleteNoteById(note.id);
             }
-            await this.loadNotesForDate(this.selectedDate);
+            const formattedDate = this.formatDateForNotes(this.selectedDate); // Reformat date before reloading notes
+            await this.loadNotesForDate(formattedDate);
             this.exitSelectionMode();
             this.presentToast('Deleted successfully.');
           }
@@ -129,8 +152,12 @@ export class CalendarPage implements OnInit, AfterViewInit {
   }
 
   async createNote() {
+    console.log('Selected Date:', this.selectedDate);
     this.router.navigate(['/create-new-note'], {
+
       state: { date: this.selectedDate }
     });
-  }
+  }  
+  
+  
 }

@@ -40,6 +40,7 @@ export class CreateNewNotePage {
   noteContent: string = '';
   noteColor: string = '';
   bColor: string = '';
+  selectedDate: string = ''; 
 
   private colors = [
     '#f1fff2', '#fedef3', '#fef1de', '#e3f2fd', '#fff9c4', '#f8bbd0', '#d1c4e9'
@@ -54,31 +55,45 @@ export class CreateNewNotePage {
     private toastController: ToastController 
 
   ) {
-
     this.storage.create(); 
-    this.currentDate = new Date();
 
-    // Retrieve the passed note if available
+    // Retrieve the passed note and date if available
     const navigation = this.router.getCurrentNavigation();
     const state = navigation?.extras.state as { [key: string]: any } | undefined;
-    const note = state ? state['note'] as { id: string, title: string; content: string } | undefined : undefined;
-
-    if (note) {
-      this.noteId = note.id;
-      this.noteTitle = note.title || '';
-      this.noteContent = note.content || '';
+  
+    if (state) {
+      const note = state['note'] as { id: string, title: string; content: string, date?: string } | undefined;
+      if (note) {
+        this.noteId = note.id;
+        this.noteTitle = note.title || '';
+        this.noteContent = note.content || '';
+        // Set currentDate based on the note's date or fallback to today
+        this.currentDate = note.date ? new Date(note.date) : new Date();
+      } else {
+        this.currentDate = new Date(); // Default to today's date if no note is passed
+      }
+  
+      // If there's a date in the state, use it
+      const passedDate = state['date'] as string | undefined;
+      if (passedDate) {
+        this.currentDate = new Date(passedDate);
+      }
+    } else {
+      this.currentDate = new Date(); // Default to today's date if no state is provided
     }
+console.log('Current Date in CreateNewNotePage:', this.currentDate);
+
   }
+
 
   ngOnInit() {
     if (!this.noteId) {
       this.assignColor();
     } else {
-      // If editing an existing note, ensure bcolor is set based on the noteColor
+      // If editing an existing note, ensure bColor is set based on the noteColor
       this.bColor = this.darkenColor(this.noteColor, 0.2);
     }
   }
-  
 
   assignColor() {
     // Randomly assign a color from the predefined set
@@ -86,13 +101,12 @@ export class CreateNewNotePage {
     this.bColor = this.darkenColor(this.noteColor, 0.2); // Darken by 20%
   }
 
-
   async saveNote() {
     const note = {
       id: this.noteId || 'note_' + Date.now(),
       title: this.noteTitle,
       content: this.noteContent,
-      date: new Date(),
+      date: this.currentDate.toISOString(), // Save as ISO string
       color: this.noteColor,
       bcolor: this.bColor, 
       isArchived: false
@@ -100,10 +114,8 @@ export class CreateNewNotePage {
     await this.notesService.saveNote(note);
     this.router.navigate(['/notes']);
     this.presentToast('Note created successfully.');  // Show toast message
-
   }
   
-
 
   darkenColor(color: string, percent: number): string {
     // Convert HEX to RGB

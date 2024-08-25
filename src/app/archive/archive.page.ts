@@ -66,11 +66,17 @@ export class ArchivePage implements OnInit {
       this.toggleNoteSelection(note);
     } else {
       this.router.navigate(['/create-new-note'], {
-        state: { note: { id: note.id, title: note.title, content: note.content } }
+        state: {
+          note: {
+            id: note.id,
+            title: note.title,
+            content: note.content,
+            date: note.date // Pass the saved date
+          }
+        }
       });
     }
   }
-
   async presentToast(message: string) {
     const toast = await this.toastController.create({
       message: message,

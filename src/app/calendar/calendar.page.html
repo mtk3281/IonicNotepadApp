@@ -20,7 +20,7 @@
 
   <!-- Flexible Area for Notes -->
   <div class="notes-area">
-    <ng-container *ngIf="notes && notes.length > 0;">
+    <ng-container *ngIf="notes && notes.length > 0">
       <ion-list>
         <ion-item *ngFor="let note of notes" (click)="onCardClick(note)">
           <ion-label>
@@ -30,6 +30,7 @@
         </ion-item>
       </ion-list>
     </ng-container>
+    
   </div>
 
   <!-- FAB Button for Creating a Note -->
