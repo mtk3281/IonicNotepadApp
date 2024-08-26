@@ -64,7 +64,7 @@ export class NotesPage implements OnInit, AfterViewInit{
         }
       }
     });
-    // await StatusBar.setBackgroundColor({ color: '#ffffff' });
+    await StatusBar.setBackgroundColor({ color: 'transparent' });
     
   }
   

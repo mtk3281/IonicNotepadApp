@@ -12,24 +12,25 @@
   <h2>Display Options</h2>
   <ion-item>
     <ion-label>Add New Items to Bottom</ion-label>
-    <ion-toggle slot="end"></ion-toggle>
+    <ion-toggle slot="end" [checked]="addNewItemsToBottom" (ionChange)="toggleAddNewItems($event)"></ion-toggle>
   </ion-item>
+  
 
   <ion-item>
     <ion-label>Theme Options</ion-label>
-    <ion-select slot="end">
+    <ion-select slot="end" [value]="theme" (ionChange)="changeTheme($event)">
       <ion-select-option value="light">Light</ion-select-option>
       <ion-select-option value="dark">Dark</ion-select-option>
     </ion-select>
   </ion-item>
-
+  
   <ion-item>
     <ion-label>App Icon Options</ion-label>
-    <ion-select slot="end">
+    <ion-select slot="end" [value]="appIcon" (ionChange)="changeAppIcon($event)">
       <ion-select-option value="icon1">Icon 1</ion-select-option>
       <ion-select-option value="icon2">Icon 2</ion-select-option>
     </ion-select>
-  </ion-item>
+  </ion-item>  
 
   <!-- Storage Info Section -->
   <h2>Storage Info</h2>
@@ -39,5 +40,6 @@
   </ion-item>
 
   <!-- Clear Cache Button -->
-  <ion-button class="clear-cache"  strong="true" shape="round" (click)="clearCache()">Clear Cache</ion-button>
+  <ion-button class="clear-cache" strong="true" shape="round" (click)="clearCache()">Clear Cache</ion-button>
+
 </ion-content>

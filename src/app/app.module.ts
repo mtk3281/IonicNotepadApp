@@ -20,6 +20,8 @@ const modules: QuillModules = {
       [{ 'color': [] }, { 'background': [] }],  
       [{ 'indent': '-1'}, { 'indent': '+1' }],
       ['code-block'], 
+      ['link', 'image', 'formula'],
+      ['clean']
     ]
   };
 

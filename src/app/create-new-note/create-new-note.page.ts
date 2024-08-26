@@ -15,17 +15,6 @@ import { Location } from '@angular/common';
 })
 export class CreateNewNotePage {
 
-  quillConfig = {
-    toolbar: [
-      ['bold', 'italic', 'underline'], 
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }], 
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-      [{ 'color': [] }, { 'background': [] }],  
-      [{ 'indent': '-1'}, { 'indent': '+1' }],
-      ['code-block'], 
-    ]
-  };
-
  // Customize styles here
  editorStyle = {
   height: 'calc(100vh - 60px)', // Adjust height to fill the screen, minus header/footer height
