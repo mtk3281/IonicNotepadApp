@@ -1,32 +1,120 @@
 
-.calendar-container {
-    min-width: 350px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 96%;
-    max-width: 550px; /* Limit the maximum width to 800px */
-    margin: 10px auto; /* Center the container */
-    background-color: rgba(255, 255, 255, 0);
-    border-radius: 22px;
-    padding: 6px; /* Add some padding for better spacing */
-    box-sizing: border-box; /* Ensure padding doesn't affect the width */
+/* Toolbar Styling */
+ion-header {
+    --background: #ffffff; /* White background for the toolbar */
+    --color: #333333; /* Dark grey text */
   }
   
-  .material-calendar {
-    width: 100%;
-    max-width: 100%; /* Ensure the calendar takes up the full width of the container */
-    --border-radius: 4px;
-    border-radius: 22px;
-  
+  ion-toolbar {
+    --background: #ffffff;
+    --color: #333333;
   }
   
+  ion-title {
+    font-weight: bold; /* Bolder title */
+  }
   
-  ion-datetime {
-    --background: #d4e5ff; /* Light blue background */
-    --background-rgb: 212, 229, 255;
+  /* Content Styling */
+  ion-content {
+    --background: #ffffff; /* White background for content */
+    padding: 16px;
+  }
+
+  ion-item{
+    --background: #ffffff;
+    --color:black;
+    --border-color: #ffffff;
+  }
   
-    border-radius: 16px;
-    box-shadow: rgba(66, 75, 255, 0.3) 0px 10px 15px -3px; /* Blue-themed shadow */
+  /* Section Heading Styling */
+  h2 {
+    color: #000000; /* Black font color for headings */
+    font-size: 18px; /* Adjust font size */
+    margin-bottom: 12px; /* Space below the heading */
+    font-weight: bold; /* Bolder heading */
+    text-align: left; /* Align text to the left */
+    padding-left: 16px; /* Left padding */
+  }
+  
+  /* Display Options Styling */
+  .display-options {
+    margin-bottom: 16px;
+  }
+  
+  .display-options ion-item {
+    --background: #f9f9f9; /* Light grey background to match white background */
+    --border-radius: 10px; /* Rounded corners */
+    --padding-start: 16px; /* Padding for text */
+    --padding-end: 16px; /* Padding for button */
+    --margin-bottom: 8px; /* Space between items */
+  }
+  
+  .display-options ion-label {
+    color: #000000; /* Black text */
+    font-size: 16px; /* Medium size */
+  }
+  
+  .display-options ion-toggle,
+  .display-options ion-select {
+    --padding-end: 0; /* Remove default padding on the right for better alignment */
+  }
+  
+  /* Storage Info Styling */
+  .storage-info {
+    margin-bottom: 16px;
+  }
+  
+  .storage-info ion-item {
+    --background: #f9f9f9; /* Light grey background to match white background */
+    --border-radius: 10px; /* Rounded corners */
+    --padding-start: 16px; /* Padding for text */
+    --padding-end: 16px; /* Padding for button */
+  }
+  
+  .storage-info ion-label {
+    color: #000000; /* Black text */
+    font-size: 16px; /* Medium size */
+  }
+  
+  .storage-info ion-note {
+    color: #666666; /* Medium grey text */
+    font-size: 14px;
+  }
+  
+  /* Clear Cache Button */
+  ion-button{
+    --background: #f85549; /* Light red color */
+    --color: #ffffff; /* White text */
+    margin-top: 16px;
+    align-self:"center";
+    display:flex;
+}
+
+
+ion-select {
+    --color: #000; /* Change this to your desired color */
+    --placeholder-color: #999; /* Adjust placeholder color if needed */
+  }
+  
+  ion-select .select-placeholder {
+    color: #999; /* Color for placeholder text */
+  }
+  
+  ion-select .select-text {
+    color: #000; /* Color for selected text */
+  }
+  
+  ion-select .select-icon {
+    color: #000; /* Color for the select icon */
+  }
+  
+  ion-popover {
+    --background: #fff; /* Background color of the popover */
+    --color: #000; /* Text color in the popover */
+  }
+  
+  ion-action-sheet {
+    --background: #fff; /* Background color of the action sheet */
+    --color: #000; /* Text color in the action sheet */
   }
   

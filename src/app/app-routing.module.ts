@@ -20,10 +20,6 @@ const routes: Routes = [
     loadChildren: () => import('./calendar/calendar.module').then( m => m.CalendarPageModule)
   },
   {
-    path: 'about',
-    loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
-  },
-  {
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
   },

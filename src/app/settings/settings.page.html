@@ -1,20 +1,43 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>settings</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/notes"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-datetime
-  type="date"
-  [(ngModel)]="selectedDate"
-  (ionChange)="onDateSelected($event)"
-  display-format="MMM d, yyyy"
-  presentation="date"
-  mode="md"
-  size="cover"
-  class="material-calendar">
-  <span slot="title">Select Date</span>
-</ion-datetime>
+<ion-content>
+  <!-- Display Options Section -->
+  <h2>Display Options</h2>
+  <ion-item>
+    <ion-label>Add New Items to Bottom</ion-label>
+    <ion-toggle slot="end"></ion-toggle>
+  </ion-item>
 
+  <ion-item>
+    <ion-label>Theme Options</ion-label>
+    <ion-select slot="end">
+      <ion-select-option value="light">Light</ion-select-option>
+      <ion-select-option value="dark">Dark</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>App Icon Options</ion-label>
+    <ion-select slot="end">
+      <ion-select-option value="icon1">Icon 1</ion-select-option>
+      <ion-select-option value="icon2">Icon 2</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!-- Storage Info Section -->
+  <h2>Storage Info</h2>
+  <ion-item>
+    <ion-label>Storage Usage</ion-label>
+    <ion-note slot="end">{{ storageUsed }} MB</ion-note>
+  </ion-item>
+
+  <!-- Clear Cache Button -->
+  <ion-button class="clear-cache"  strong="true" shape="round" (click)="clearCache()">Clear Cache</ion-button>
 </ion-content>
