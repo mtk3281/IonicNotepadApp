@@ -132,7 +132,7 @@ ion-fab-button {
   max-width: 100%; /* Ensure the calendar takes up the full width of the container */
   --border-radius: 4px;
   border-radius: 22px;
-
+  color:#2255b3;
 }
 
 
@@ -144,3 +144,6 @@ ion-datetime {
   box-shadow: rgba(66, 75, 255, 0.3) 0px 10px 15px -3px; /* Blue-themed shadow */
 }
 
+ion-datetime::part(month-year-button) {
+  color: #3460ff;
+}
