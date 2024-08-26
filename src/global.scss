@@ -63,7 +63,7 @@
 }
 
 .ql-editor{
-    width: 100%;
+    width: 99%;
 }
 
 .ql-editor.ql-blank::before{
@@ -77,13 +77,15 @@
     background-color: #cedcff;
     border : 1px solid #cecece;
     border-radius:14px;
-    margin:2px;
+    margin:4px;
 }
 
 .ql-toolbar.ql-snow .ql-formats {
     margin-right: 4px;
 }
-
+// .ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button {
+//   margin-right: 4px;
+// }
 
 .toast-custom {
     --background: #000;        // Black background color
