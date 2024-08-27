@@ -88,7 +88,7 @@ console.log('Current Date in CreateNewNotePage:', this.currentDate);
   assignColor() {
 
     this.noteColor = this.colors[Math.floor(Math.random() * this.colors.length)];
-    this.bColor = this.darkenColor(this.noteColor, 0.2); /
+    this.bColor = this.darkenColor(this.noteColor, 0.2); 
   }
 
   async saveNote() {
