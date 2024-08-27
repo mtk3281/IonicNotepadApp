@@ -167,27 +167,27 @@ ion-fab {
   opacity: 0;
 }
 
-/* Search Bar Specific Styles */
+
 ion-toolbar.toolbar-search {
-  --background: #fff; /* White background for the toolbar */
+  --background: #fff; 
   width: auto;
 }
 
 .mysearch-bar {
   --icon-color:black;
-  --background: #F5F6F6; /* Light grey background */
-  --placeholder-color: #000000; /* Black color for placeholder text */
+  --background: #F5F6F6;
+  --placeholder-color: #000000; 
   --color: #000000;
-  --border-radius: 12px; /* Rounded corners */
+  --border-radius: 12px;
     margin: 6px;
-  --border-radius: 18px; /* Rounded corners */
+  --border-radius: 18px; 
   --padding-start: 20px;
   --padding-end: 20px;
   --padding-top: 25px;
   --padding-bottom: 5px;
-  padding-right: 18px; /* Add padding to the right */
-  padding-top: 6px; /* Add padding to the top */
-  --placeholder-font-style: normal; /* Remove italic from placeholder text */
+  padding-right: 18px; 
+  padding-top: 6px;
+  --placeholder-font-style: normal; 
   --box-shadow: none;
 }
 

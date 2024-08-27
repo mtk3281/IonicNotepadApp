@@ -1,6 +1,5 @@
 import { Component, AfterViewInit, ViewChild, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { StatusBar } from '@capacitor/status-bar';
 import { IonMenu } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 import { NotesService } from '../notes.service';
@@ -64,7 +63,6 @@ export class NotesPage implements OnInit, AfterViewInit{
         }
       }
     });
-    // await StatusBar.setBackgroundColor({ color: 'transparent' });
     
   }
   
@@ -103,10 +101,10 @@ export class NotesPage implements OnInit, AfterViewInit{
   
   
   ngAfterViewInit() {
-    // Trigger change detection to ensure view is fully initialized
+   
     this.cdr.detectChanges();
     if (this.inSearchMode) {
-      // Use a timeout to ensure the searchbar is ready
+
       setTimeout(() => {
         console.log('Setting focus');
         this.searchbar.setFocus();
@@ -116,7 +114,7 @@ export class NotesPage implements OnInit, AfterViewInit{
 
   activateSearchMode() {
     this.inSearchMode = true;
-    // Ensure that the focus logic is applied
+
     this.cdr.detectChanges();
     setTimeout(() => {
       console.log('Setting focus in activateSearchMode');
@@ -195,9 +193,9 @@ export class NotesPage implements OnInit, AfterViewInit{
   async archiveSelectedNotes() {
     for (const note of this.selectedNotes) {
       note.isArchived = true;
-      await this.notesService.updateNote(note); // Save the updated note with `isArchived` true
+      await this.notesService.updateNote(note); 
     }
-    await this.loadNotes(); // Reload to show only non-archived notes
+    await this.loadNotes();
     this.exitSelectionMode();
     this.presentToast('note archived');
   }

@@ -1,4 +1,3 @@
-// notes.service.ts
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 
@@ -18,7 +17,7 @@ export class NotesService {
 
   async saveNote(note: any) {
     if (this.localStorage) {
-      await this.localStorage.set(note.id, note); // Use the note's id as the key
+      await this.localStorage.set(note.id, note); 
     } else {
       console.error('Storage is not initialized');
     }
@@ -60,7 +59,7 @@ export class NotesService {
 
   async updateNote(note: any) {
     if (this.localStorage) {
-      await this.localStorage.set(note.id, note); // Save the updated note back to storage
+      await this.localStorage.set(note.id, note); 
     } else {
       console.error('Storage is not initialized');
     }
@@ -73,7 +72,7 @@ export class NotesService {
       for (const key of keys) {
         if (key.startsWith('note_')) {
           const note = await this.localStorage.get(key);
-          if (note && note.date && note.isArchived === false) { // Ensure isArchived is false
+          if (note && note.date && note.isArchived === false) { 
             const noteDate = new Date(note.date).toLocaleDateString('en-GB'); // Convert to dd/mm/yyyy format
             if (noteDate === date) {
               notes.push(note);

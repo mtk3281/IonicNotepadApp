@@ -17,7 +17,7 @@ export class ArchivePage implements OnInit {
 
   notes: any[] = [];
   selectedNotes: any[] = [];
-  filteredNotes: any[] = [];   // Notes that match the search query
+  filteredNotes: any[] = [];  
   inSelectionMode = false;
  
   @ViewChild('mainMenu', { static: true }) mainMenu!: IonMenu;
@@ -71,7 +71,7 @@ export class ArchivePage implements OnInit {
             id: note.id,
             title: note.title,
             content: note.content,
-            date: note.date // Pass the saved date
+            date: note.date 
           }
         }
       });
@@ -80,9 +80,9 @@ export class ArchivePage implements OnInit {
   async presentToast(message: string) {
     const toast = await this.toastController.create({
       message: message,
-      duration: 2000,  // Duration in milliseconds
-      position: 'bottom',  // Position on the screen
-      color: 'dark',  // Customize the color if needed
+      duration: 2000,  
+      position: 'bottom', 
+      color: 'dark',  
       cssClass: 'toast-custom',
     });
     toast.present();
@@ -126,7 +126,7 @@ export class ArchivePage implements OnInit {
               for (const note of this.selectedNotes) {
                 await this.notesService.deleteNoteById(note.id);
               }
-              await this.loadNotes(); // Reload notes after deletion
+              await this.loadNotes(); 
               this.exitSelectionMode();
               this.presentToast('Notes deleted successfully.');
             } catch (error) {

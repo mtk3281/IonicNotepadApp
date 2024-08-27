@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content id="main-content" class="content-calendar">
-  <!-- Centered Calendar -->
+
   <div class="calendar-container">
     <ion-datetime
       type="date"
@@ -23,7 +23,6 @@
     </ion-datetime>
   </div>
   
-    <!-- FAB Button for Creating a Note -->
     <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="selectedDate">
       <ion-fab-button (click)="createNote()">
         <ion-icon name="add"></ion-icon>

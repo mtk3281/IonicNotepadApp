@@ -1,7 +1,6 @@
-/* Import Proxima Nova font */
+
 @import url('https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@400;700&display=swap');
 
-/* Apply Proxima Nova font to the entire app */
 :root {
   --font-family: 'Proxima Nova', sans-serif;
 }
@@ -11,7 +10,6 @@ ion-menu-button{
    color:white !important;
 }
 
-/* Apply font to entire app */
 body {
   font-family: var(--font-family);
 }
@@ -22,73 +20,71 @@ body {
     border-bottom: 2px  solid #e5f2ff;
 }
 
-/* Remove line separator */
+
 ion-header,
 ion-content {
   box-shadow: none;
 }
 
 
-/* Set the background color of the entire page */
+
 ion-content {
-  --background: #ffffff; /* White background */
+  --background: #ffffff;
   padding: 16px;
 }
 
-/* Toolbar styling */
+
 ion-toolbar {
-  --background: #ffffff; /* White background */
-  --color: #000000; /* Black color for text */
+  --background: #ffffff;
+  --color: #000000; 
   padding: 8px 1px 1px 1px;
   justify-content: space-between;
-  height: 64px; /* Set a consistent height */
+  height: 64px; 
 }
 
 
-/* Title styling */
 .app-title {
   font-family: var(--font-family);
   font-size: 24px;
   font-weight: bold;
   text-align: left;
-  color: #000000; /* Black color for the title */
+  color: #000000; 
 }
 
 
-/* Menu styling */
 .custom-menu {
     --width: 75%;
   }
 
 .menu-toolbar {
     --background: #ffffff;
-    align-items: center; /* Ensure vertical alignment */
+    align-items: center;
     padding: 16px;
-    height: 70px; /* Set a consistent height */
-    border: none; /* Ensure no border */
-    box-shadow: none; /* Remove any box-shadow if present */
+    height: 70px;
+    border: none; 
+    box-shadow: none; 
 }
 
 .menu-icon {
-    margin-left: 8px; /* Space between icon and title */
-    width: 32px; /* Adjust size as needed */
-    height: 32px; /* Adjust size as needed */
+    margin-left: 8px; 
+    width: 32px; 
+    height: 32px; 
 }
 
 .menu-title {
     font-family: var(--font-family);
     font-size: 22px;
     font-weight: bold;
-    color: #000000; /* Black color for the title */
-    margin: 0; /* Remove any default margin */
+    color: #000000; 
+    margin: 0;
 }
   
-/* Ensure no padding/margin issues with the image */
+
 .menu-toolbar img {
-margin: 0; /* Remove any extra margin */
+margin: 0; 
 }
 
-/* Search bar styling */
+
 .search-bar {
   --padding-start: 16px;
   --padding-end: 16px;
@@ -96,57 +92,56 @@ margin: 0; /* Remove any extra margin */
   --padding-bottom: 12px;
   
   --icon-color:black;
-  --background: #F5F6F6; /* Light grey background */
-  --placeholder-color: #000000; /* Black color for placeholder text */
-  --color: #000000; /* Black color for text */
-  --border-radius: 12px; /* Rounded corners */
+  --background: #F5F6F6; 
+  --placeholder-color: #000000; 
+  --color: #000000; 
+  --border-radius: 12px;
   margin: 6px;
-  padding-right: 18px; /* Add padding to the right */
-  padding-top: 6px; /* Add padding to the top */
-  --placeholder-font-style: normal; /* Remove italic from placeholder text */
+  padding-right: 18px; 
+  padding-top: 6px; 
+  --placeholder-font-style: normal; 
   --box-shadow: none;
 }
 
-/* Menu header styling */
+
 .menu-header {
   font-family: var(--font-family);
   font-size: 15px;
   font-weight: 540;
-  color: #4d4d4d; /* Grey color */
+  color: #4d4d4d; 
   margin-top: 12px;
   padding-left: 16px;
 }
 
-/* Menu item styling */
 .menu-item {
-  --background: #ffffff; /* White background */
-  --color: #000000; /* Black color for text */
-  --border-radius: 12px; /* Rounded corners */
+  --background: #ffffff; 
+  --color: #000000;
+  --border-radius: 12px; 
   padding-top: 2px;
-  padding-left:  10px; /* Less padding between items */
-  padding-right:  10px; /* Less padding between items */
+  padding-left:  10px; 
+  padding-right:  10px;
   padding-bottom: 6px;
-  font-weight: bold; /* Increase text weight */
+  font-weight: bold;
  --border-color:transparent;
 }
 
 .menu-item:hover {
-  --background: #F5F6F6; /* Light grey on hover */
+  --background: #F5F6F6; 
 }
 .menu-item.active {
-  --background: #F5F6F6; /* Light grey for active item */
+  --background: #F5F6F6;
 }
 
 .menu-item ion-icon {
-  color: #000000; /* Black color for icons */
+  color: #000000; 
 }
 ion-list {
     --ion-item-background: #ffffff;
     --background: #ffffff;
     --ion-background-color: #fefefe;
-    --box-shadow: none; /* Remove any shadow */
-    --border-color: transparent; /* Remove any border */
-    --border-bottom: 1px solid #ffffff; /* Remove black layer between items */
+    --box-shadow: none; 
+    --border-color: transparent; 
+    --border-bottom: 1px solid #ffffff; 
 }
 
 :host{
@@ -154,7 +149,7 @@ ion-list {
     --display:flex;
 }
   
-/* Container styling */
+
 #container {
   text-align: left;
   position: absolute;
@@ -185,9 +180,9 @@ ion-list {
   background-color: #ffffff;
   display: flex;
   --background: #ffffff;
-  align-items: center; /* Ensure vertical alignment */
+  align-items: center;
   padding: 14px;
-  height: 70px; /* Set a consistent height */
-  border: none; /* Ensure no border */
-  box-shadow: none; /* Remove any box-shadow if present */
+  height: 70px;
+  border: none;
+  box-shadow: none; 
 }

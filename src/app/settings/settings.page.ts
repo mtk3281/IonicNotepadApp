@@ -9,7 +9,7 @@ import { Storage } from '@ionic/storage-angular';
   styleUrls: ['settings.page.scss'],
 })
 export class SettingsPage {
-  storageUsed = '0'; // Example value
+  storageUsed = '0'; 
   addNewItemsToBottom = true;
   theme = 'light';
   appIcon = 'icon1';
@@ -19,7 +19,7 @@ export class SettingsPage {
     private location: Location,
     private storage: Storage
   ) { 
-    this.storage.create(); // Ensure storage is initialized
+    this.storage.create();
     this.calculateStorageUsage();
     this.loadSettings();
   }
@@ -28,10 +28,9 @@ export class SettingsPage {
   async calculateStorageUsage() {
     let totalBytes = 0;
 
-    // Get all keys from the storage
     const keys = await this.storage.keys();
 
-    // Iterate through each key and calculate the size of the stored value
+  
     for (let key of keys) {
       const value = await this.storage.get(key);
       if (value) {
@@ -39,12 +38,11 @@ export class SettingsPage {
       }
     }
 
-    // Convert bytes to MB and update storageUsed
     const storageInMB = (totalBytes / (1024 * 1024)).toFixed(2);
     this.storageUsed = storageInMB;
   }
 
-  // Helper method to calculate size in bytes
+
   calculateSizeInBytes(value: string): number {
     return new Blob([value]).size;
   }
@@ -89,9 +87,9 @@ export class SettingsPage {
   clearCache() {
     localStorage.clear();
     this.clearAllNotes();
-    this.calculateStorageUsage(); // Recalculate after clearing cache
+    this.calculateStorageUsage(); 
     alert('Cache cleared successfully!');
-    this.presentToast('Cache cleared');  // Show toast message
+    this.presentToast('Cache cleared');  
     this.location.back();
   }
 
@@ -100,7 +98,7 @@ export class SettingsPage {
       message: message,
       duration: 2000,  // Duration in milliseconds
       position: 'bottom',  // Position on the screen
-      color: 'dark',  // Customize the color if needed
+      color: 'dark',  
       cssClass: 'toast-custom',
     });
     toast.present();

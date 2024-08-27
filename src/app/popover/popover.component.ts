@@ -11,18 +11,16 @@ export class PopoverComponent {
   constructor(private popoverController: PopoverController) {}
 
   ngOnInit() {}
-  // Method to handle the delete action
+
   onDelete() {
     console.log('Delete clicked!');
     this.popoverController.dismiss({ action: 'delete' });
-    // Add your delete logic here
   }
 
-  // Method to handle the share action
   onShare() {
     console.log('Share clicked!');
     this.popoverController.dismiss({ action: 'share' });
-    // Add your share logic here
+
   }
 }
 

@@ -3,6 +3,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { PopoverComponent } from './popover.component';
 
+import { Storage } from '@ionic/storage-angular';  
+
 describe('PopoverComponent', () => {
   let component: PopoverComponent;
   let fixture: ComponentFixture<PopoverComponent>;

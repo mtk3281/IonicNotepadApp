@@ -27,9 +27,9 @@ export class AppComponent {
   }
 
   onSearchMenu() {
-    this.mainMenu.close(); // Close the menu
+    this.mainMenu.close(); 
     this.router.navigate(['/notes']).then(() => {
-      // Trigger the search mode activation after navigation
+
       this.searchService.setSearchMode(true);
     });
   }

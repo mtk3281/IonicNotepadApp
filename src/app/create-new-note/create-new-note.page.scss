@@ -16,7 +16,7 @@ ion-toolbar{
   --background:rgb(255, 255, 255);
 }
 
-/* Remove line separator */
+
 ion-header,
 ion-content {
   box-shadow: none;
@@ -33,7 +33,7 @@ ion-content {
   padding-left:14px;
   display: flex;
   justify-content: left;
-  // align-items: baseline;
+
 }
 
 .day-number {
@@ -87,12 +87,12 @@ p{
   padding-top: 0px;
   width: 85%;
   color: black;
-  height: auto; /* Let the height be controlled by content */
-  overflow-y: hidden; /* Hide scrollbars */
-  resize: none; /* Prevent manual resizing */
+  height: auto; 
+  overflow-y: hidden; 
+  resize: none; 
   font-size: 1.45em;
   font-weight: 548;
-  line-height: 1.45em; /* Ensure the line height matches the font size */
+  line-height: 1.45em; 
   --highlight-color:disabled;
   caret-color:rgb(58, 107, 255);
   --highlight-color-focused:disabled;
@@ -102,9 +102,9 @@ p{
 .note-text {
   color: rgb(13, 13, 13);
   width:100%;
-  height: auto; /* Let the height be controlled by content */
-  overflow-y: hidden; /* Hide scrollbars */
-  resize: none; /* Prevent manual resizing */
+  height: auto; 
+  overflow-y: hidden;
+  resize: none; 
   --placeholder-color: rgb(21, 21, 21);
   caret-color:rgb(12, 12, 12);
 

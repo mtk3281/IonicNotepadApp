@@ -15,12 +15,12 @@ import { Location } from '@angular/common';
 })
 export class CreateNewNotePage {
 
- // Customize styles here
+ 
  editorStyle = {
-  height: 'calc(100vh - 60px)', // Adjust height to fill the screen, minus header/footer height
+  height: 'calc(100vh - 60px)',
   backgroundColor: 'white',
   color: 'black',
-  fontSize: 'medium',  // Set font size to medium
+  fontSize: 'medium',  
   padding: '4px', 
 };
 
@@ -48,7 +48,6 @@ export class CreateNewNotePage {
   ) {
     this.storage.create(); 
 
-    // Retrieve the passed note and date if available
     const navigation = this.router.getCurrentNavigation();
     const state = navigation?.extras.state as { [key: string]: any } | undefined;
   
@@ -58,19 +57,19 @@ export class CreateNewNotePage {
         this.noteId = note.id;
         this.noteTitle = note.title || '';
         this.noteContent = note.content || '';
-        // Set currentDate based on the note's date or fallback to today
+
         this.currentDate = note.date ? new Date(note.date) : new Date();
       } else {
-        this.currentDate = new Date(); // Default to today's date if no note is passed
+        this.currentDate = new Date(); 
       }
   
-      // If there's a date in the state, use it
+
       const passedDate = state['date'] as string | undefined;
       if (passedDate) {
         this.currentDate = new Date(passedDate);
       }
     } else {
-      this.currentDate = new Date(); // Default to today's date if no state is provided
+      this.currentDate = new Date();
     }
 console.log('Current Date in CreateNewNotePage:', this.currentDate);
 
@@ -81,15 +80,15 @@ console.log('Current Date in CreateNewNotePage:', this.currentDate);
     if (!this.noteId) {
       this.assignColor();
     } else {
-      // If editing an existing note, ensure bColor is set based on the noteColor
+      
       this.bColor = this.darkenColor(this.noteColor, 0.2);
     }
   }
 
   assignColor() {
-    // Randomly assign a color from the predefined set
+
     this.noteColor = this.colors[Math.floor(Math.random() * this.colors.length)];
-    this.bColor = this.darkenColor(this.noteColor, 0.2); // Darken by 20%
+    this.bColor = this.darkenColor(this.noteColor, 0.2); /
   }
 
   async saveNote() {
@@ -97,14 +96,14 @@ console.log('Current Date in CreateNewNotePage:', this.currentDate);
       id: this.noteId || 'note_' + Date.now(),
       title: this.noteTitle,
       content: this.noteContent,
-      date: this.currentDate.toISOString(), // Save as ISO string
+      date: this.currentDate.toISOString(), 
       color: this.noteColor,
       bcolor: this.bColor, 
       isArchived: false
     };
     await this.notesService.saveNote(note);
-    this.presentToast('Note created successfully.');  // Show toast message
-    this.location.back(); // Navigate back to the previous page (calendar page)
+    this.presentToast('Note created successfully.');  
+    this.location.back();
   }
   
 
@@ -147,7 +146,6 @@ console.log('Current Date in CreateNewNotePage:', this.currentDate);
     g = Math.round(this.hueToRgb(p, q, h) * 255);
     b = Math.round(this.hueToRgb(p, q, h - 1/3) * 255);
   
-    // Convert RGB back to HEX
     return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()}`;
   }
   
@@ -160,8 +158,7 @@ console.log('Current Date in CreateNewNotePage:', this.currentDate);
     return p;
   }
 
-  
-  // Method to present the popover
+ 
   async presentPopover(ev: any) {
     const popover = await this.popoverController.create({
       component: PopoverComponent,
@@ -182,9 +179,9 @@ console.log('Current Date in CreateNewNotePage:', this.currentDate);
   async presentToast(message: string) {
     const toast = await this.toastController.create({
       message: message,
-      duration: 2000,  // Duration in milliseconds
-      position: 'bottom',  // Position on the screen
-      color: 'dark',  // Customize the color if needed
+      duration: 2000,  
+      position: 'bottom',  
+      color: 'dark',  
       cssClass: 'toast-custom',
     });
     toast.present();

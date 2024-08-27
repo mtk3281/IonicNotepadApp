@@ -38,11 +38,11 @@ export class CalendarPage implements OnInit, AfterViewInit {
 
   async ngOnInit() {
     const today = new Date();
-    this.selectedDate = today.toISOString(); // Store in ISO format for the calendar
+    this.selectedDate = today.toISOString(); 
   
-    const formattedDate = this.formatDateForNotes(this.selectedDate); // Format to dd/MM/yyyy
+    const formattedDate = this.formatDateForNotes(this.selectedDate); 
     await this.storage.create();
-    await this.loadNotesForDate(formattedDate); // Load notes for today's date
+    await this.loadNotesForDate(formattedDate);
     await StatusBar.setBackgroundColor({ color: '#ffffff' });
   }
   
@@ -52,18 +52,18 @@ export class CalendarPage implements OnInit, AfterViewInit {
 
   formatDateForNotes(isoDate: string): string {
     const date = new Date(isoDate);
-    return date.toLocaleDateString('en-GB'); // Convert to dd/MM/yyyy format
+    return date.toLocaleDateString('en-GB'); 
   }
 
   async loadNotesForDate(date: string) {
-    console.log('Loading notes for date:', date); // Ensure this is always in dd/MM/yyyy format
+    console.log('Loading notes for date:', date); 
     this.notes = await this.notesService.getNoteByDate(date);
     console.log('Fetched notes:', this.notes);
   }  
 
   onDateSelected(event: any) {
-    const formattedDate = this.formatDateForNotes(this.selectedDate); // Convert to dd/MM/yyyy format
-    this.loadNotesForDate(formattedDate); // Load notes for the selected date
+    const formattedDate = this.formatDateForNotes(this.selectedDate); 
+    this.loadNotesForDate(formattedDate);
   }
 
   openNote(note: any) {
@@ -76,7 +76,7 @@ export class CalendarPage implements OnInit, AfterViewInit {
             id: note.id,
             title: note.title,
             content: note.content,
-            date: note.date // Pass the saved date
+            date: note.date 
           }
         }
       });
@@ -127,7 +127,7 @@ export class CalendarPage implements OnInit, AfterViewInit {
             for (const note of this.filteredNotes) {
               await this.notesService.deleteNoteById(note.id);
             }
-            const formattedDate = this.formatDateForNotes(this.selectedDate); // Reformat date before reloading notes
+            const formattedDate = this.formatDateForNotes(this.selectedDate);
             await this.loadNotesForDate(formattedDate);
             this.exitSelectionMode();
             this.presentToast('Deleted successfully.');
@@ -150,7 +150,6 @@ export class CalendarPage implements OnInit, AfterViewInit {
   async createNote() {
     console.log('Selected Date:', this.selectedDate);
   
-    // Store the previous route
     this.router.navigate(['/create-new-note'], {
       state: { date: this.selectedDate}
     });
