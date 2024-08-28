@@ -18,7 +18,7 @@ export class PopoverComponent {
   onShare() {
     console.log('Share clicked!');
     this.popoverController.dismiss({ action: 'share' });
-
   }
+  
 }
 

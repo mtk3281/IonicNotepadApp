@@ -31,6 +31,13 @@ export class NotesPage implements OnInit, AfterViewInit{
 
   currentPage: string = '';
 
+  /* constructor which initializes the required services and the router
+    it also checks if the notes are being loaded
+    if the notes are being loaded, it sets the notes
+    it also checks if the search mode is activated
+    if the search mode is activated, it sets the inSearchMode to true
+    if the search mode is activated, it calls the activateSearchMode() function
+    */
   constructor(
     private router: Router,
     private storage: Storage,
@@ -55,6 +62,9 @@ export class NotesPage implements OnInit, AfterViewInit{
     
   }
 
+  // creating storage and loading notes
+  // loading settings
+  // loading notes
   async ngOnInit() {
     await this.storage.create();
     await this.loadSettings();  
@@ -110,8 +120,8 @@ export class NotesPage implements OnInit, AfterViewInit{
   }
   
   
+  // function which detect changes inSearchMode and sets focus
   ngAfterViewInit() {
-   
     this.cdr.detectChanges();
     if (this.inSearchMode) {
 
@@ -122,9 +132,10 @@ export class NotesPage implements OnInit, AfterViewInit{
     }
   }
 
+  // function to activate search mode
+  // sets inSearchMode to true
   activateSearchMode() {
     this.inSearchMode = true;
-
     this.cdr.detectChanges();
     setTimeout(() => {
       console.log('Setting focus in activateSearchMode');
@@ -136,6 +147,8 @@ export class NotesPage implements OnInit, AfterViewInit{
     this.inSearchMode = false;
   }
 
+  // function to search notes
+  // filters notes based on the query
   onSearch(event: any) {
     const query = event.detail.value.toLowerCase();
     this.filteredNotes = query ? this.notes.filter(note => 
@@ -198,8 +211,6 @@ export class NotesPage implements OnInit, AfterViewInit{
     await alert.present();
   }
   
-  
-
   async archiveSelectedNotes() {
     for (const note of this.selectedNotes) {
       note.isArchived = true;

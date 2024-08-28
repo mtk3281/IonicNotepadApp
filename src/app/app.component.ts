@@ -26,6 +26,8 @@ export class AppComponent {
     });
   }
 
+  // function to open the search menu
+  // it closes the main menu and navigates to the notes page
   onSearchMenu() {
     this.mainMenu.close(); 
     this.router.navigate(['/notes']).then(() => {

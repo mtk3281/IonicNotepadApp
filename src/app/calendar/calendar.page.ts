@@ -36,6 +36,8 @@ export class CalendarPage implements OnInit, AfterViewInit {
     });
   }
 
+  // conversion of the selected date to a format that can be used to fetch notes
+  // creating storage and loading notes for the selected date
   async ngOnInit() {
     const today = new Date();
     this.selectedDate = today.toISOString(); 
@@ -46,10 +48,12 @@ export class CalendarPage implements OnInit, AfterViewInit {
     await StatusBar.setBackgroundColor({ color: '#ffffff' });
   }
   
+  // updating the view after the view has been initialized
   ngAfterViewInit() {
     this.cdr.detectChanges();
   }
 
+  // formatting the date for the notes
   formatDateForNotes(isoDate: string): string {
     const date = new Date(isoDate);
     return date.toLocaleDateString('en-GB'); 

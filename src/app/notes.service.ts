@@ -16,6 +16,7 @@ export class NotesService {
     this.localStorage = await this.storage.create();
   }
 
+  // Save a note to the storage
   async saveNote(note: any) {
     if (this.localStorage) {
       await this.localStorage.set(note.id, note); 
@@ -24,6 +25,7 @@ export class NotesService {
     }
   }
 
+  // Get all notes from the storage based on the archive status
   async getNotes(archiveStatus: boolean): Promise<any[]> {
     const notes: any[] = [];
     if (this.localStorage) {
@@ -42,7 +44,7 @@ export class NotesService {
     return notes;
   }
 
-
+  //get note by id 
   async getNoteById(id: string) {
     if (this.localStorage) {
       return await this.localStorage.get(id);
@@ -50,6 +52,7 @@ export class NotesService {
     return null;
   }
 
+  // delete note by id
   async deleteNoteById(id: string) {
     if (this.localStorage) {
       await this.localStorage.remove(id);
@@ -66,6 +69,7 @@ export class NotesService {
     }
   }
 
+  // Get all notes from the storage based on the date
   async getNoteByDate(date: string): Promise<any[]> {
     const notes: any[] = [];
     if (this.localStorage) {

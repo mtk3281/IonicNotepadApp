@@ -36,6 +36,7 @@ export class ArchivePage implements OnInit {
     });
   }
 
+  // creating storage and loading notes
   async ngOnInit() {
     await this.storage.create();
     await this.loadNotes();
@@ -59,6 +60,7 @@ export class ArchivePage implements OnInit {
     }
   }
 
+  // opening note function
   openNote(note: any) {
     if (this.inSelectionMode) {
       this.toggleNoteSelection(note);
@@ -75,6 +77,8 @@ export class ArchivePage implements OnInit {
       });
     }
   }
+
+  // creating toast function
   async presentToast(message: string) {
     const toast = await this.toastController.create({
       message: message,
@@ -99,6 +103,7 @@ export class ArchivePage implements OnInit {
     this.selectedNotes = [];
   }
 
+  // used to toggle the selction of notes
   toggleNoteSelection(note: any) {
     const index = this.selectedNotes.indexOf(note);
     if (index > -1) {
@@ -139,6 +144,7 @@ export class ArchivePage implements OnInit {
     await alert.present();
   }
   
+  // unarchive selection of the notes
   async unarchiveSelectedNotes() {
     try {
       for (const note of this.selectedNotes) {

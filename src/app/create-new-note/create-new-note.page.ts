@@ -32,10 +32,16 @@ export class CreateNewNotePage {
   bColor: string = '';
   selectedDate: string = ''; 
 
+  // colors which can be used to change the background color of the note
   private colors = [
     '#d4e5ff'
   ];
   
+  /* constructor which initializes the required services and the router
+   it also checks if the note is being edited or created
+   if the note is being edited, it sets the noteId, noteTitle, noteContent, and currentDate
+   if the note is being created, it sets the currentDate
+   it also assigns a random color to the note   */
 
   constructor(
     private popoverController: PopoverController, 
@@ -75,7 +81,7 @@ export class CreateNewNotePage {
 
   }
 
-
+  // assigns a color to the note if the note is being created
   ngOnInit() {
     if (!this.noteId) {
       this.assignColor();
@@ -86,11 +92,11 @@ export class CreateNewNotePage {
   }
 
   assignColor() {
-
     this.noteColor = this.colors[Math.floor(Math.random() * this.colors.length)];
     this.bColor = this.darkenColor(this.noteColor, 0.2); 
   }
 
+  // note saving function which save the note using notesService
   async saveNote() {
     const note = {
       id: this.noteId || 'note_' + Date.now(),
@@ -106,25 +112,23 @@ export class CreateNewNotePage {
     this.location.back();
   }
   
-
+  // function to find the color of the border of the note
   darkenColor(color: string, percent: number): string {
-    // Convert HEX to RGB
     let r = parseInt(color.slice(1, 3), 16);
     let g = parseInt(color.slice(3, 5), 16);
     let b = parseInt(color.slice(5, 7), 16);
-  
-    // Convert RGB to HSL
+
     r /= 255;
     g /= 255;
     b /= 255;
   
     const max = Math.max(r, g, b);
     const min = Math.min(r, g, b);
-    let h = 0;  // Initialize h to 0 to avoid undefined issues
+    let h = 0; 
     let s, l = (max + min) / 2;
   
     if (max === min) {
-      s = 0; // achromatic
+      s = 0;
     } else {
       const d = max - min;
       s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
@@ -136,10 +140,8 @@ export class CreateNewNotePage {
       h /= 6;
     }
   
-    // Darken the lightness by the specified percentage
     l = l * (1 - percent);
   
-    // Convert HSL back to RGB
     let q = l < 0.5 ? l * (1 + s) : l + s - l * s;
     let p = 2 * l - q;
     r = Math.round(this.hueToRgb(p, q, h + 1/3) * 255);
@@ -158,7 +160,7 @@ export class CreateNewNotePage {
     return p;
   }
 
- 
+  // popover function which opens the popover which can be used to delete or share the note  
   async presentPopover(ev: any) {
     const popover = await this.popoverController.create({
       component: PopoverComponent,
@@ -199,17 +201,16 @@ export class CreateNewNotePage {
 
   }
 
-
+  // function to convert html to text 
   private htmlToText(html: string): string {
     const temporaryElement = document.createElement('div');
     temporaryElement.innerHTML = html;
     return temporaryElement.textContent || temporaryElement.innerText || '';
   }
 
-
+  //function to share the note using capacitor share module 
   async shareNote() {
     try {
-      // Convert HTML content to plain text
       const plainTextContent = this.htmlToText(this.noteContent);
       
       await Share.share({

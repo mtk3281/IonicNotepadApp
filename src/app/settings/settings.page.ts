@@ -24,12 +24,14 @@ export class SettingsPage {
     this.init();
   }
 
+  // initializing the storage and loading the settings
   async init() {
     await this.storage.create();
     await this.calculateStorageUsage();
     await this.loadSettings();
   }
 
+  // function to calculate the storage usage
   async calculateStorageUsage() {
     try {
       let totalBytes = 0;
@@ -53,6 +55,7 @@ export class SettingsPage {
     return new Blob([value]).size;
   }
 
+  // loading the settings from the storage
   async loadSettings() {
     this.addNewItemsToBottom = await this.settingsService.getAddNewItemsToBottom();
 
