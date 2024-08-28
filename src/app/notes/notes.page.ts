@@ -41,11 +41,11 @@ export class NotesPage implements OnInit, AfterViewInit{
   constructor(
     private router: Router,
     private storage: Storage,
-    private notesService: NotesService,
+    private cdr: ChangeDetectorRef,
     private alertController: AlertController,
     private toastController: ToastController,
+    private notesService: NotesService,
     private searchService: SearchService,
-    private cdr: ChangeDetectorRef,
     private settingsService: SettingsService
   ) {
     this.router.events.subscribe(() => {

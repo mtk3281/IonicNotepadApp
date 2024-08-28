@@ -47,6 +47,10 @@ ion-fab {
   z-index: 10;
 }
 
+ion-toolbar{
+  --background:#ffffff;
+}
+
 
 .cards-container {
   display: flex;
@@ -83,10 +87,6 @@ ion-fab {
   font-weight: normal;
   font-size: 14px;
   color: #333; 
-}o
-
-.toolbar-notes {
-  --background: #fff;
 }
 
 .selection-toolbar {

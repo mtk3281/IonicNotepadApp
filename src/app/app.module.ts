@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PopoverComponent } from './popover/popover.component';
 import { IonicStorageModule } from '@ionic/storage-angular';
-import { NotesPage } from './notes/notes.page';
 import { MatIconModule } from '@angular/material/icon'; 
 import { QuillModule, QuillModules } from 'ngx-quill';
 import { NgCalendarModule } from 'ionic2-calendar';

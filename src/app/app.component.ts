@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonMenu } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { IonSearchbar, MenuController } from '@ionic/angular';
+import { MenuController } from '@ionic/angular';
 import { SearchService } from './search.service';
 
 
@@ -12,7 +12,6 @@ import { SearchService } from './search.service';
 })
 export class AppComponent {
   @ViewChild('mainMenu', { static: true }) mainMenu!: IonMenu;
-  @ViewChild('menuSearchBar', { static: false }) menuSearchBar!: IonSearchbar;
 
   currentPage: string = '';
 
