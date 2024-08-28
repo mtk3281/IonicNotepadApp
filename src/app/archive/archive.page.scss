@@ -68,6 +68,7 @@ ion-toolbar {
   font-weight: normal; 
   font-size: 14px; 
   color: #333; 
+}
 
 .toolbar-notes {
   --background: #fff;
@@ -113,8 +114,10 @@ ion-toolbar {
 .selection-toolbar mat-icon {
   font-size: 26px; 
 }
+
 .toolbar-notes mat-icon {
   font-size: 26px;
+}
 
 .selected-count {
   padding-top: 10px;
