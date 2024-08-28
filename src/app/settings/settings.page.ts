@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { Location } from '@angular/common';
 import { Storage } from '@ionic/storage-angular';
+import { SettingsService } from '../settings.service';
 
 @Component({
   selector: 'app-settings',
@@ -17,44 +18,47 @@ export class SettingsPage {
   constructor(
     private toastController: ToastController,
     private location: Location,
-    private storage: Storage
+    private storage: Storage,
+    private settingsService: SettingsService
   ) { 
-    this.storage.create();
-    this.calculateStorageUsage();
-    this.loadSettings();
+    this.init();
   }
 
+  async init() {
+    await this.storage.create();
+    await this.calculateStorageUsage();
+    await this.loadSettings();
+  }
 
   async calculateStorageUsage() {
-    let totalBytes = 0;
+    try {
+      let totalBytes = 0;
+      const keys = await this.storage.keys();
 
-    const keys = await this.storage.keys();
-
-  
-    for (let key of keys) {
-      const value = await this.storage.get(key);
-      if (value) {
-        totalBytes += this.calculateSizeInBytes(JSON.stringify(value));
+      for (let key of keys) {
+        const value = await this.storage.get(key);
+        if (value) {
+          totalBytes += this.calculateSizeInBytes(JSON.stringify(value));
+        }
       }
+
+      const storageInMB = (totalBytes / (1024 * 1024)).toFixed(2);
+      this.storageUsed = storageInMB;
+    } catch (error) {
+      console.error('Error calculating storage usage:', error);
     }
-
-    const storageInMB = (totalBytes / (1024 * 1024)).toFixed(2);
-    this.storageUsed = storageInMB;
   }
-
 
   calculateSizeInBytes(value: string): number {
     return new Blob([value]).size;
   }
 
-  loadSettings() {
-    const savedPreference = localStorage.getItem('addNewItemsToBottom');
+  async loadSettings() {
+    this.addNewItemsToBottom = await this.settingsService.getAddNewItemsToBottom();
+
     const savedTheme = localStorage.getItem('theme');
     const savedIcon = localStorage.getItem('appIcon');
 
-    if (savedPreference !== null) {
-      this.addNewItemsToBottom = JSON.parse(savedPreference);
-    }
     if (savedTheme) {
       this.theme = savedTheme;
       document.body.classList.toggle('dark-theme', savedTheme === 'dark');
@@ -64,9 +68,9 @@ export class SettingsPage {
     }
   }  
 
-  toggleAddNewItems(event: any) {
+  async toggleAddNewItems(event: any) {
     this.addNewItemsToBottom = event.detail.checked;
-    localStorage.setItem('addNewItemsToBottom', JSON.stringify(this.addNewItemsToBottom));
+    await this.settingsService.setAddNewItemsToBottom(this.addNewItemsToBottom);
   }
 
   changeTheme(event: any) {
@@ -84,21 +88,25 @@ export class SettingsPage {
     await this.storage.clear();
   }
 
-  clearCache() {
-    localStorage.clear();
-    this.clearAllNotes();
-    this.calculateStorageUsage(); 
-    alert('Cache cleared successfully!');
-    this.presentToast('Cache cleared');  
-    this.location.back();
+  async clearCache() {
+    try {
+      localStorage.clear();
+      await this.clearAllNotes();
+      await this.calculateStorageUsage(); 
+      await this.presentToast('Cache cleared', 2000);  
+      this.location.back();
+    } catch (error) {
+      console.error('Error clearing cache:', error);
+      this.presentToast('Error clearing cache', 2000);
+    }
   }
 
-  async presentToast(message: string) {
+  async presentToast(message: string, duration: number = 2000) {
     const toast = await this.toastController.create({
       message: message,
-      duration: 2000,  // Duration in milliseconds
-      position: 'bottom',  // Position on the screen
-      color: 'dark',  
+      duration: duration,
+      position: 'bottom',
+      color: 'dark',
       cssClass: 'toast-custom',
     });
     toast.present();

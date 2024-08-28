@@ -8,6 +8,7 @@ import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { SearchService } from '../search.service';
 import { IonSearchbar} from '@ionic/angular';
+import { SettingsService } from '../settings.service';
 
 @Component({
   selector: 'app-notes',
@@ -22,6 +23,7 @@ export class NotesPage implements OnInit, AfterViewInit{
   filteredNotes: any[] = [];   // Notes that match the search query
   inSelectionMode = false;
   inSearchMode = false;
+  addNewItemsToBottom = true;
 
   @ViewChild('searchbar', { static: false, read: IonSearchbar }) searchbar!: IonSearchbar;
   @ViewChild('mainMenu', { static: true }) mainMenu!: IonMenu;
@@ -36,7 +38,8 @@ export class NotesPage implements OnInit, AfterViewInit{
     private alertController: AlertController,
     private toastController: ToastController,
     private searchService: SearchService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private settingsService: SettingsService
   ) {
     this.router.events.subscribe(() => {
       this.currentPage = this.router.url.split('/').pop() as string;
@@ -54,23 +57,30 @@ export class NotesPage implements OnInit, AfterViewInit{
 
   async ngOnInit() {
     await this.storage.create();
+    await this.loadSettings();  // Load the latest setting value
     await this.loadNotes();
-
+  
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         if (event.urlAfterRedirects === '/notes') {
+          this.loadSettings();  // Refresh the setting when navigating to the notes page
           this.loadNotes();
         }
       }
     });
-    
   }
-  
+
+  async loadSettings() {
+    this.addNewItemsToBottom = await this.settingsService.getAddNewItemsToBottom();
+  }
 
   async loadNotes() {
     this.notes = await this.notesService.getNotes(false);
+    if (!this.addNewItemsToBottom) {
+      this.notes.reverse();
+    }
   }
-
+  
   openNote(note: any) {
     if (this.inSelectionMode) {
       this.toggleNoteSelection(note);
