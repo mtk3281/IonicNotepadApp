@@ -1,8 +1,7 @@
 
-/* Toolbar Styling */
 ion-header {
-    --background: #ffffff; /* White background for the toolbar */
-    --color: #333333; /* Dark grey text */
+    --background: #ffffff;
+    --color: #333333; 
   }
   
   ion-toolbar {
@@ -11,12 +10,11 @@ ion-header {
   }
   
   ion-title {
-    font-weight: bold; /* Bolder title */
+    font-weight: bold; 
   }
   
-  /* Content Styling */
   ion-content {
-    --background: #ffffff; /* White background for content */
+    --background: #ffffff;
     padding: 16px;
   }
 
@@ -26,65 +24,61 @@ ion-header {
     --border-color: #ffffff;
   }
   
-  /* Section Heading Styling */
   h2 {
-    color: #000000; /* Black font color for headings */
-    font-size: 18px; /* Adjust font size */
-    margin-bottom: 12px; /* Space below the heading */
-    font-weight: bold; /* Bolder heading */
-    text-align: left; /* Align text to the left */
-    padding-left: 16px; /* Left padding */
+    color: #000000; 
+    font-size: 18px; 
+    margin-bottom: 12px;
+    font-weight: bold; 
+    text-align: left; 
+    padding-left: 16px; 
   }
   
-  /* Display Options Styling */
   .display-options {
     margin-bottom: 16px;
   }
   
   .display-options ion-item {
-    --background: #f9f9f9; /* Light grey background to match white background */
-    --border-radius: 10px; /* Rounded corners */
-    --padding-start: 16px; /* Padding for text */
-    --padding-end: 16px; /* Padding for button */
-    --margin-bottom: 8px; /* Space between items */
+    --background: #f9f9f9;
+    --border-radius: 10px; 
+    --padding-start: 16px; 
+    --padding-end: 16px; 
+    --margin-bottom: 8px; 
   }
   
   .display-options ion-label {
-    color: #000000; /* Black text */
-    font-size: 16px; /* Medium size */
+    color: #000000;
+    font-size: 16px;
   }
   
   .display-options ion-toggle,
   .display-options ion-select {
-    --padding-end: 0; /* Remove default padding on the right for better alignment */
+    --padding-end: 0;
   }
   
-  /* Storage Info Styling */
   .storage-info {
     margin-bottom: 16px;
   }
   
   .storage-info ion-item {
-    --background: #f9f9f9; /* Light grey background to match white background */
-    --border-radius: 10px; /* Rounded corners */
-    --padding-start: 16px; /* Padding for text */
-    --padding-end: 16px; /* Padding for button */
+    --background: #f9f9f9; 
+    --border-radius: 10px; 
+    --padding-start: 16px; 
+    --padding-end: 16px; 
   }
   
   .storage-info ion-label {
-    color: #000000; /* Black text */
-    font-size: 16px; /* Medium size */
+    color: #000000;
+    font-size: 16px;
   }
   
   .storage-info ion-note {
-    color: #666666; /* Medium grey text */
+    color: #666666; 
     font-size: 14px;
   }
   
-  /* Clear Cache Button */
   ion-button{
-    --background: #f85549; /* Light red color */
-    --color: #ffffff; /* White text */
+    --background: #f85549; 
+    --color: #ffffff; 
     margin-top: 16px;
     align-self:"center";
     display:flex;
@@ -92,29 +86,29 @@ ion-header {
 
 
 ion-select {
-    --color: #000; /* Change this to your desired color */
-    --placeholder-color: #999; /* Adjust placeholder color if needed */
+    --color: #000; 
+    --placeholder-color: #999; 
   }
   
   ion-select .select-placeholder {
-    color: #999; /* Color for placeholder text */
+    color: #999; 
   }
   
   ion-select .select-text {
-    color: #000; /* Color for selected text */
+    color: #000;
   }
   
   ion-select .select-icon {
-    color: #000; /* Color for the select icon */
+    color: #000; 
   }
   
   ion-popover {
-    --background: #fff; /* Background color of the popover */
-    --color: #000; /* Text color in the popover */
+    --background: #fff; 
+    --color: #000;
   }
   
   ion-action-sheet {
-    --background: #fff; /* Background color of the action sheet */
-    --color: #000; /* Text color in the action sheet */
+    --background: #fff; 
+    --color: #000; 
   }
   

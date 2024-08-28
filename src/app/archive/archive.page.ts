@@ -42,7 +42,7 @@ export class ArchivePage implements OnInit {
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        if (event.urlAfterRedirects === '/archive') {  // Check for the correct route
+        if (event.urlAfterRedirects === '/archive') { 
           this.loadNotes();
         }
       }
@@ -53,7 +53,7 @@ export class ArchivePage implements OnInit {
 
   async loadNotes() {
     try {
-      this.notes = await this.notesService.getNotes(true); // Load archived notes
+      this.notes = await this.notesService.getNotes(true);
     } catch (error) {
       console.error('Error loading notes:', error);
     }

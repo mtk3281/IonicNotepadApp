@@ -1,25 +1,22 @@
-/* Import Proxima Nova font */
 @import url('https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@400;700&display=swap');
 
-/* Apply Proxima Nova font to the entire app */
 :root {
   --font-family: 'Proxima Nova', sans-serif;
 }
 
-/* Apply font to entire app */
 body {
   font-family: var(--font-family);
 }
 
-// /* Remove line separator */
+
 ion-header,
 ion-content {
   box-shadow: none;
   --box-shadow:none;
 }
-/* Set the background color of the entire page */
+
 ion-content {
-  --background: #ffffff; /* White background */
+  --background: #ffffff; 
   padding: 1px;
 }
 
@@ -29,38 +26,35 @@ ion-menu-button{
 }
 
 
-/* Toolbar styling */
+
 ion-toolbar {
-  // --background: #ffffff; /* White background */
-  --color: #000000; /* Black color for text */
+  --color: #000000; 
   padding: 8px 4px;
   justify-content: space-between;
-  height: 64px; /* Set a consistent height */
+  height: 64px; 
 }
 
 
-/* FAB button styling */
 ion-fab-button {
-  --background: #2b75ff; /* Black background */
-  --color: #ffffff; /* White icon color */
-  // --color: #fef1de;
+  --background: #2b75ff; 
+  --color: #ffffff; 
 }
 
 ion-fab {
   position: fixed;
-  bottom: 40px; /* Adjust as needed */
-  right: 20px;  /* Adjust as needed */
-  z-index: 10; /* Make sure it stays above other elements */
+  bottom: 40px; 
+  right: 20px;  
+  z-index: 10;
 }
 
-/* Container for the cards */
+
 .cards-container {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
 }
 
-/* Styling for individual cards */
+
 .note-card {
   margin-top: 6px;
   margin-left: 6px;
@@ -68,28 +62,28 @@ ion-fab {
   margin-bottom: 6px;
 
   flex: 1 1 auto; 
-  --background: #ededed; /* Card background color */
-  box-shadow: none; /* Remove shadow */
-  padding: 0px; /* Add padding inside the card */
-  text-align: left; /* Align text to the left */
+  --background: #ededed; 
+  box-shadow: none; 
+  padding: 0px; 
+  text-align: left;
 }
 
-/* Title styling */
+
 .note-card ion-card-title {
-  font-family: 'Roboto', sans-serif; /* Roboto for title */
-  font-weight: bold; /* Bold title */
-  font-size: 18px; /* Larger title font size */
-  color: #000000; /* Black color for title */
-  margin-bottom: 0px; /* Space below title */
+  font-family: 'Roboto', sans-serif; 
+  font-weight: bold; 
+  font-size: 18px; 
+  color: #000000;
+  margin-bottom: 0px; 
 }
 
-/* Content styling */
+
 .note-card ion-card-content {
-  font-family: 'sans-serif'; /* Sans-serif for content */
-  font-weight: normal; /* Regular content */
-  font-size: 14px; /* Smaller than title */
-  color: #333; /* Dark grey color for text */
-}
+  font-family: 'sans-serif'; 
+  font-weight: normal;
+  font-size: 14px;
+  color: #333; 
+}o
 
 .toolbar-notes {
   --background: #fff;
@@ -97,56 +91,55 @@ ion-fab {
 
 .selection-toolbar {
   border-bottom: 2px solid #323232;
-  --background: #000000; /* Light blue color */
-  padding: 0; /* Remove default padding */
+  --background: #000000;
+  padding: 0; 
 }
 
 .selection-toolbar ion-title {
   font-weight: bold;
-  font-size: 1.1em; /* Adjust size as needed */
+  font-size: 1.1em; 
 }
 
 .selection-toolbar ion-buttons {
-  height: 100%; /* Ensure buttons take full height of the toolbar */
+  height: 100%; 
   display: flex;
-  align-items: center; /* Center items vertically */
+  align-items: center; 
   color: #ffffff;
 }
 
 .selection-toolbar ion-button {
-  --padding-start: 0; /* Adjust padding as needed */
-  --padding-end: 0px; /* Adjust padding as needed */
-  margin: 0 10px; /* Add horizontal margin between buttons */
-  height: 100%; /* Ensure button height matches toolbar height */
+  --padding-start: 0; 
+  --padding-end: 0px; 
+  margin: 0 10px; 
+  height: 100%; 
   display: flex;
-  align-items: center; /* Center icons vertically */
+  align-items: center;
 }
 
 .toolbar-notes ion-button {
-  --padding-start: 0; /* Adjust padding as needed */
-  --padding-end: 5px; /* Adjust padding as needed */
-  margin: 0 12px; /* Add horizontal margin between buttons */
-  height: 100%; /* Ensure button height matches toolbar height */
+  --padding-start: 0; 
+  --padding-end: 5px; 
+  margin: 0 12px; 
+  height: 100%;
   display: flex;
-  align-items: center; /* Center icons vertically */
+  align-items: center;
 }
 
 
 .selection-toolbar mat-icon {
-  font-size: 26px; /* Adjust icon size as needed */
+  font-size: 26px;
 }
 .toolbar-notes mat-icon {
-  font-size: 26px; /* Adjust icon size as needed */
+  font-size: 26px; 
 }
 
 .selected-count {
   padding-top: 10px;
   padding-left:35px;
   font-weight: bold;
-  // font-size: 0.9em; /* Adjust size as needed */
+ 
 }
 
-/* General toolbar styles */
 .toolbar-notes, .toolbar-search {
   transition: opacity 0.5s ease-in-out;
 }

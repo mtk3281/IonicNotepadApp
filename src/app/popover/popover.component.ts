@@ -10,8 +10,6 @@ export class PopoverComponent {
 
   constructor(private popoverController: PopoverController) {}
 
-  ngOnInit() {}
-
   onDelete() {
     console.log('Delete clicked!');
     this.popoverController.dismiss({ action: 'delete' });

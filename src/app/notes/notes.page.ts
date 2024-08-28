@@ -20,7 +20,7 @@ export class NotesPage implements OnInit, AfterViewInit{
 
   notes: any[] = [];
   selectedNotes: any[] = [];
-  filteredNotes: any[] = [];   // Notes that match the search query
+  filteredNotes: any[] = [];   
   inSelectionMode = false;
   inSearchMode = false;
   addNewItemsToBottom = true;
@@ -57,13 +57,13 @@ export class NotesPage implements OnInit, AfterViewInit{
 
   async ngOnInit() {
     await this.storage.create();
-    await this.loadSettings();  // Load the latest setting value
+    await this.loadSettings();  
     await this.loadNotes();
   
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         if (event.urlAfterRedirects === '/notes') {
-          this.loadSettings();  // Refresh the setting when navigating to the notes page
+          this.loadSettings();  
           this.loadNotes();
         }
       }
@@ -91,7 +91,7 @@ export class NotesPage implements OnInit, AfterViewInit{
             id: note.id,
             title: note.title,
             content: note.content,
-            date: note.date // Pass the saved date
+            date: note.date 
           }
         }
       });
@@ -187,9 +187,9 @@ export class NotesPage implements OnInit, AfterViewInit{
             for (const note of this.selectedNotes) {
               await this.notesService.deleteNoteById(note.id);
             }
-            await this.loadNotes(); // Reload notes after deletion
+            await this.loadNotes(); 
             this.exitSelectionMode();
-            this.presentToast('deleted successfully.');  // Show toast message
+            this.presentToast('deleted successfully.');  
           }
         }
       ]

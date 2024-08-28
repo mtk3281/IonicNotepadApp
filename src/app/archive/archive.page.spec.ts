@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ArchivePage } from './archive.page';
 import { IonicModule } from '@ionic/angular';
-import { Storage } from '@ionic/storage-angular';  // Import Storage
+import { Storage } from '@ionic/storage-angular'; 
 
 describe('ArchivePage', () => {
   let component: ArchivePage;
@@ -9,13 +9,13 @@ describe('ArchivePage', () => {
   let storageMock: jasmine.SpyObj<Storage>;
 
   beforeEach(async () => {
-    storageMock = jasmine.createSpyObj('Storage', ['get', 'set', 'remove']); // Mock Storage service
+    storageMock = jasmine.createSpyObj('Storage', ['get', 'set', 'remove']); 
 
     await TestBed.configureTestingModule({
       declarations: [ArchivePage],
       imports: [IonicModule.forRoot()],
       providers: [
-        { provide: Storage, useValue: storageMock }  // Provide the Storage mock
+        { provide: Storage, useValue: storageMock } 
       ]
     }).compileComponents();
 

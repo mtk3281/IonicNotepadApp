@@ -1,27 +1,18 @@
-
-
-
-// /* Remove line separator */
 ion-header,
 ion-content {
   box-shadow: none;
   --box-shadow:none;
 }
 
-/* Set the background color of the entire page */
 ion-content {
-    --background: #ffffff; /* White background */
-    padding: 1px;
+    --background: #ffffff;
   }
   
-
-/* Toolbar styling */
 ion-toolbar {
-// --background: #ffffff; /* White background */
---color: #000000; /* Black color for text */
+--color: #000000;
     padding: 8px 4px;
     justify-content: space-between;
-    height: 64px; /* Set a consistent height */
+    height: 64px; 
   }
 
 .toolbar-notes {
@@ -31,23 +22,21 @@ ion-toolbar {
 ion-content {
     --background: #ffffff;
     height: 100%;
-    min-height: 100vh; /* Ensure it covers the viewport height */
+    min-height: 100vh; 
     display: flex;
     flex-direction: column;
   }
   
-  /* FAB button styling */
 ion-fab-button {
-    --background: #2b75ff; /* Black background */
-    --color: #ffffff; /* White icon color */
-    // --color: #fef1de;
+    --background: #2b75ff; 
+    --color: #ffffff;
   }
   
   ion-fab {
     position: fixed;
-    bottom: 40px; /* Adjust as needed */
-    right: 20px;  /* Adjust as needed */
-    z-index: 10; /* Make sure it stays above other elements */
+    bottom: 40px;
+    right: 20px; 
+    z-index: 10;
   }
   
 
@@ -58,14 +47,13 @@ ion-fab-button {
 }
 
 
-/* Container for the cards */
 .cards-container {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  flex: 1; // Allows notes area to take up remaining space
+  flex: 1; 
   padding: 16px;
-  overflow-y: auto; // Enables vertical scrolling for notes area
+  overflow-y: auto;
   margin-bottom: 30px;
   margin-top: 20px;
   padding-bottom: 40px;
@@ -78,27 +66,25 @@ ion-fab-button {
   margin-bottom: 6px;
 
   flex: 1 1 auto; 
-  --background: #ededed; /* Card background color */
-  box-shadow: none; /* Remove shadow */
-  padding: 0px; /* Add padding inside the card */
-  text-align: left; /* Align text to the left */
+  --background: #ededed; 
+  box-shadow: none; 
+  padding: 0px; 
+  text-align: left; 
 }
 
-/* Title styling */
 .note-card ion-card-title {
-  font-family: 'Roboto', sans-serif; /* Roboto for title */
-  font-weight: bold; /* Bold title */
-  font-size: 18px; /* Larger title font size */
-  color: #000000; /* Black color for title */
-  margin-bottom: 0px; /* Space below title */
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 18px; 
+  color: #000000; 
+  margin-bottom: 0px; 
 }
 
-/* Content styling */
 .note-card ion-card-content {
-  font-family: 'sans-serif'; /* Sans-serif for content */
-  font-weight: normal; /* Regular content */
-  font-size: 14px; /* Smaller than title */
-  color: #333; /* Dark grey color for text */
+  font-family: 'sans-serif'; 
+  font-weight: normal; 
+  font-size: 14px;
+  color: #333;
 }
 
 .toolbar-calendar{
@@ -107,9 +93,9 @@ ion-fab-button {
 
 
 .content-calendar {
-  background: #ffffff; /* Toolbar background color */
-  color: #000000; /* Toolbar text color */
-  border-color: #e0e0e0; /* Toolbar bottom border color */
+  background: #ffffff; 
+  color: #000000;
+  border-color: #e0e0e0; 
   overflow: auto;
 }
 
@@ -119,17 +105,17 @@ ion-fab-button {
   justify-content: center;
   align-items: center;
   width: 96%;
-  max-width: 550px; /* Limit the maximum width to 800px */
-  margin: 10px auto; /* Center the container */
+  max-width: 550px; 
+  margin: 10px auto;
   background-color: rgba(255, 255, 255, 0);
   border-radius: 22px;
-  padding: 6px; /* Add some padding for better spacing */
-  box-sizing: border-box; /* Ensure padding doesn't affect the width */
+  padding: 6px; 
+  box-sizing: border-box;
 }
 
 .material-calendar {
   width: 100%;
-  max-width: 100%; /* Ensure the calendar takes up the full width of the container */
+  max-width: 100%; 
   --border-radius: 4px;
   border-radius: 22px;
   color:#2255b3;
@@ -137,11 +123,11 @@ ion-fab-button {
 
 
 ion-datetime {
-  --background: #d4e5ff; /* Light blue background */
+  --background: #d4e5ff; 
   --background-rgb: 212, 229, 255;
 
   border-radius: 16px;
-  box-shadow: rgba(66, 75, 255, 0.3) 0px 10px 15px -3px; /* Blue-themed shadow */
+  box-shadow: rgba(66, 75, 255, 0.3) 0px 10px 15px -3px; 
 }
 
 ion-datetime::part(month-year-button) {

@@ -10,12 +10,8 @@ describe('CreateNewNotePage', () => {
   let popoverControllerMock: jasmine.SpyObj<PopoverController>;
 
   beforeEach(async () => {
-    // Create the spy object for Storage with the 'create' method
     storageMock = jasmine.createSpyObj('Storage', ['create', 'get', 'set', 'remove']);
-    // Initialize 'create' to resolve to a promise (if it needs to be async)
     storageMock.create.and.returnValue(Promise.resolve() as unknown as Promise<Storage>);
-
-    // Create the spy object for PopoverController
     popoverControllerMock = jasmine.createSpyObj('PopoverController', ['create']);
 
     await TestBed.configureTestingModule({

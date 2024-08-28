@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { AlertController, ToastController, IonicModule } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 
-// Spy Object Definitions
+
 const notesServiceSpy = jasmine.createSpyObj('NotesService', ['getNotes', 'deleteNoteById', 'updateNote']);
 const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 const alertControllerSpy = jasmine.createSpyObj('AlertController', ['create']);
@@ -16,7 +16,7 @@ describe('NotesPage', () => {
   let fixture: ComponentFixture<NotesPage>;
 
   beforeEach(async () => {
-    // Configure spies
+
     alertControllerSpy.create.and.returnValue(Promise.resolve({
       present: () => Promise.resolve(),
       onDidDismiss: () => Promise.resolve()
@@ -25,7 +25,6 @@ describe('NotesPage', () => {
       present: () => Promise.resolve()
     } as any));
 
-    // Configure TestBed
     await TestBed.configureTestingModule({
       declarations: [NotesPage],
       imports: [IonicModule.forRoot()],
@@ -50,7 +49,7 @@ describe('NotesPage', () => {
     const mockNotes = [{ id: '1', title: 'Test Note', content: 'Content', date: '2024-08-27' }];
     notesServiceSpy.getNotes.and.returnValue(Promise.resolve(mockNotes));
     
-    await component.ngOnInit(); // Call ngOnInit manually
+    await component.ngOnInit(); 
 
     expect(component.notes).toEqual(mockNotes);
   });
@@ -59,12 +58,11 @@ describe('NotesPage', () => {
     const mockNotes = [{ id: '1', title: 'Test Note', content: 'Content', date: '2024-08-27' }];
     notesServiceSpy.getNotes.and.returnValue(Promise.resolve(mockNotes));
     
-    spyOn(component, 'loadNotes').and.callThrough(); // Spy on loadNotes method
+    spyOn(component, 'loadNotes').and.callThrough(); 
 
-    await component.ngOnInit(); // Call ngOnInit manually
+    await component.ngOnInit();
 
-    expect(component.loadNotes).toHaveBeenCalled(); // Check if loadNotes was called
+    expect(component.loadNotes).toHaveBeenCalled();
   });
 
-  // Add more tests as needed
 });
