@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage-angular';
 @Injectable({
   providedIn: 'root'
 })
+
 export class NotesService {
   private localStorage: Storage | null = null;
 

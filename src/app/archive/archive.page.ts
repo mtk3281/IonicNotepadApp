@@ -6,7 +6,6 @@ import { Storage } from '@ionic/storage-angular';
 import { NotesService } from '../notes.service';
 import { Share } from '@capacitor/share';
 import { AlertController, ToastController } from '@ionic/angular';
-import { SearchService } from '../search.service';
 
 @Component({
   selector: 'app-archive',
@@ -30,8 +29,7 @@ export class ArchivePage implements OnInit {
     private notesService: NotesService,
     private alertController: AlertController,
     private toastController: ToastController,
-    private searchService: SearchService,
-    private cdr: ChangeDetectorRef
+
   ) {
     this.router.events.subscribe(() => {
       this.currentPage = this.router.url.split('/').pop() as string;

@@ -71,7 +71,7 @@ export class CreateNewNotePage {
     } else {
       this.currentDate = new Date();
     }
-console.log('Current Date in CreateNewNotePage:', this.currentDate);
+    console.log('Current Date in CreateNewNotePage:', this.currentDate);
 
   }
 
